@@ -112,7 +112,9 @@ namespace TechnoBlogProject.Controllers
         }
 
         public PartialViewResult BlogCover(int id)
+
         {
+            ViewBag.id = id;
             var blogDetailsList = _blogManager.GetBlogByIdList(id);
             return PartialView(blogDetailsList);
 

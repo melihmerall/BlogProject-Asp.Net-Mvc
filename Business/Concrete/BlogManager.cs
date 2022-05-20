@@ -27,6 +27,7 @@ namespace Business.Concrete
         }
 
 
+
     }
 
 }
