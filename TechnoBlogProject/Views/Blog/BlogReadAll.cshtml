@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Entity.Concrete.Blog>
+@foreach (var value in Model)
+{
+    <!-- section -->
+    <!-- post share -->
+    <div class="section-row">
+        <div class="post-share">
+            <a href="#" class="social-facebook"><i class="fa fa-facebook"></i><span>Share</span></a>
+            <a href="#" class="social-twitter"><i class="fa fa-twitter"></i><span>Tweet</span></a>
+            <a href="#" class="social-pinterest"><i class="fa fa-pinterest"></i><span>Pin</span></a>
+            <a href="#"><i class="fa fa-envelope"></i><span>Email</span></a>
+        </div>
+
+    </div>
+    <!-- /post share -->
+    <!-- post content -->
+    <div class="section-row">
+        <h3>Ea vix periculis sententiae, ea blandit pericula abhorreant pri.</h3>
+        <p style="color: black; font-family: serif; font-size: 2.1rem;">@value.BlogContent</p>
+        <div>
+            <blockquote class="blockquote">
+                <p>Tırnak içinde Özlü Söz ekle</p>
+                <footer class="blockquote-footer">@value.Author.AuthorName</footer>
+            </blockquote>
+        </div>
+
+
+        <figure>
+            <img src="@value.BlogImage" alt="">
+        </figure>
+
+    </div>
+
+    <!-- /post content -->
+}

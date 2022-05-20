@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "BlogDetails";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+<div class="section">
+    @Html.Action("BlogCover", "Blog")
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                @Html.Action("BlogReadAll", "Blog")
+                @Html.Action("CommentList", "Comment")
+            </div>
+            <div class="col-md-4">
+                <div class="section-title">
+                    @Html.Action("AuthorAbout", "Author")
+                    @Html.Action("AuthorPopularPost", "Author")
+                    @Html.Action("BlogDetailsCategoryList", "Category")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Grid Active -->
+@Html.Action("Footer", "About")
+

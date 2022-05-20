@@ -1,0 +1,89 @@
+﻿@using System.Web.UI.WebControls
+@using PagedList;
+@using PagedList.Mvc
+
+
+@model IEnumerable<Entity.Concrete.Blog>
+
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <h2>Posts</h2><br>
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-8">
+
+                <!-- post -->
+                @foreach (var x in Model)
+                {
+                    <div class="post post-row">
+                        <a class="post-img" href="blog-post.html"><img src="@x.BlogImage" alt=""></a>
+                        <div class="post-body">
+                            <div class="post-category">
+                                <a href="category.html">@x.Category.CategoryName</a>
+
+                            </div>
+                            <h3 class="post-title"><a href="blog-post.html">@x.BlogTitle</a></h3>
+                            <ul class="post-meta">
+                                <li><a href="author.html">@x.Author.AuthorName</a></li>
+                                <li>@(((DateTime)x.BlogDate).ToString("yyyy MMMM dd"))</li>
+                            </ul>
+                            <p>@x.BlogContent.Substring(0, x.BlogContent.Substring(0, 200).LastIndexOf(" "))</p>
+                        </div>
+                    </div>
+                }
+                <!-- /post -->
+
+
+            </div>
+
+            <div class="col-md-4">
+                <!-- galery widget -->
+                <!-- /galery widget -->
+                <!-- Ad widget -->
+                <!-- post -->
+                <div class="aside-widget">
+                    <div class="section-title">
+                        <h2 class="title">See Our Instagram Posts</h2>
+                    </div>
+                    <div class="galery-widget">
+                        <ul>
+                            <li><a href="#"><img src="~/blogThema/img/galery-1.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="~/blogThema/img/galery-2.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="~/blogThema/img/galery-3.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="~/blogThema/img/galery-4.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="~/blogThema/img/galery-5.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="~/blogThema/img/galery-6.jpg" alt=""></a></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+                <div>
+                    <a class="badge badge-info" href="#">Software</a>
+                    <a class="badge badge-danger" href="#">Digital Marketing</a>
+                    <a class="badge badge-dark" href="#">Web Development</a>
+                    <a class="badge badge-pill" href="#">Data Science</a>
+                    <a class="badge badge-primary" href="#">Algorithim</a>
+                    <a class="badge badge-secondary" href="#">Blockchain</a>
+
+
+                </div>
+            </div>
+            <!-- /post -->
+            <!-- /row -->
+            <!-- /Ad widget -->
+        </div>
+
+
+    </div>
+    <div class="section-row loadmore text-center">
+        <button class="btn btn-danger">See More..</button>
+    </div>
+
+    @*<div class="section-row loadmore text-center">
+            @Html.PagedListPager((IPagedList)Model, pageValue => Url.Action("Index", "Blog", new { pageValue }), PagedListRenderOptions.TwitterBootstrapPager)
+        </div>*@
+</div>
+
+

@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div class="site-section bg-light">
+    <div class="container">
+        <div>
+            <h2>Featured Posts</h2><br />
+        </div>
+        <div class="row align-items-stretch retro-layout-2">
+
+            <div class="col-md-4">
+                <a href="single.html" class="h-entry mb-30 v-height gradient" style="background-image: url('@ViewBag.postImage1');">
+
+                    <div class="text">
+                        <h2>@ViewBag.postTitle1</h2>
+                        <span class="date">@(((DateTime)ViewBag.blogDate1).ToString("yyyy MMMM dd"))</span>
+                    </div>
+                </a>
+                <a href="single.html" class="h-entry v-height gradient" style="background-image: url('@ViewBag.postImage2');">
+
+                    <div class="text">
+                        <h2>@ViewBag.postTitle2</h2>
+                        <span class="date">@(((DateTime)ViewBag.blogDate2).ToString("yyyy MMMM dd"))</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="single.html" class="h-entry img-5 h-100 gradient" style="background-image: url('@ViewBag.postImage5');">
+
+                    <div class="text">
+                        <h2>@ViewBag.postTitle5</h2>
+                        <span class="date">@(((DateTime)ViewBag.blogDate5).ToString("yyyy MMMM dd"))</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="single.html" class="h-entry mb-30 v-height gradient" style="background-image: url('@ViewBag.postImage3');">
+
+                    <div class="text">
+                        <h2>@ViewBag.postTitle3</h2>
+                        <span class="date">@(((DateTime)ViewBag.blogDate3).ToString("yyyy MMMM dd"))</span>
+                    </div>
+                </a>
+                <a href="single.html" class="h-entry v-height gradient" style="background-image: url('@ViewBag.postImage4');">
+
+                    <div class="text">
+                        <h2>@ViewBag.postTitle4</h2>
+                        <span class="date">@(((DateTime)ViewBag.blogDate4).ToString("yyyy MMMM dd"))</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

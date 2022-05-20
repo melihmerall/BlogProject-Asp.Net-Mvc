@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Entity.Concrete.Blog>
+
+@foreach (var value in Model)
+{
+
+
+
+    <!-- PAGE HEADER - FOTO BAŞLIK -->
+    <div id="post-header" class="page-header">
+        <div class="page-header-bg" style="background-image: url('@value.BlogImage'); background-size: cover;" data-stellar-background-ratio="0.5" data-parallax="scroll" data-ios-fix="true" data-over-scroll-fix="true" data-android-fix="true"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="post-category">
+                        <a href="category.html">@value.Category.CategoryName</a>
+                    </div>
+                    <h1>@value.BlogTitle</h1>
+                    <ul class="post-meta">
+                        <li><a href="author.html">@value.Author.AuthorName</a></li>
+                        <li> @(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</li>
+                        <li><i class="fa fa-comments"></i> 3</li>
+                        <li><i class="fa fa-eye"></i> 807</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

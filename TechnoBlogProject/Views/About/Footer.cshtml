@@ -1,0 +1,74 @@
+﻿
+@model IEnumerable<Entity.Concrete.About>
+
+<!-- FOOTER -->
+<footer id="footer">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            @foreach (var x in Model)
+            {
+
+
+                <div class="col-md-5">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <a href="index.html" class="logo"><img src="~/blogThema/img/logo-small.png" alt="technovblog"></a>
+                        </div>
+                        <p style="color: aliceblue; ">About Us</p>
+                        <p>
+                            @x.AboutContent
+
+                        </p>
+                        <ul class="contact-social">
+                            <li><a href="#" class="social-twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" class="social-google-plus"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" class="social-instagram"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            }
+            <div class="col-md-7">
+                <div class="footer-widget">
+                    <h3 class="footer-title">Tags</h3>
+                    <div class="tags-widget">
+                        <ul>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                            <li><a href="#">Tags</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- /row -->
+        <!-- row -->
+        <div class="footer-bottom row">
+            <div class="col-md-12 ">
+                <div class="footer-copyright" style="font-size: initial; font-weight: bold">
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> All rights reserved.
+                </div>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</footer>
+<!-- /FOOTER -->

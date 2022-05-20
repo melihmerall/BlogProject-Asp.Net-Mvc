@@ -1,0 +1,33 @@
+﻿@model Entity.Concrete.Comment
+
+<div class="comment-form-wrap pt-5">
+    <h3 class="mb-5">Leave a Reply</h3>
+    @using (Html.BeginForm("ReplyComment", "Comment", FormMethod.Post))
+    {
+        <input type="hidden" name="BlogId" value="@ViewBag.id" />
+
+
+        <div class="form-group">
+            @Html.LabelForModel("Name ")
+            @Html.TextBoxFor(x => x.UserName, new { @PlaceHolder = "Name...", @class = "form-control p-5 bg-light ", @type = "text" })
+        </div>
+
+        <div class="form-group">
+            @Html.Label("E-Mail")
+            @Html.TextBoxFor(x => x.Mail, new { @PlaceHolder = "E-Mail...", @class = "form-control p-5 bg-light ", @type = "email" })
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Message ")
+            @Html.TextAreaFor(x => x.CommentText, new { @PlaceHolder = "Message...", @class = "form-control p-5 bg-light form-group " })
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Send Reply" class="btn btn-primary">
+        </div>
+
+
+
+    }
+</div>
+
+

@@ -1,0 +1,161 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Technoteq</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CMuli:400,700" rel="stylesheet">
+    <!-- Bootstrap -->
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="~/blogFrontEnd/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/blogThema/css/bootstrapp.min.css">
+    <link rel="stylesheet" href="~/blogThema/css/font-awesomee.min.css">
+    <!--BlogFrontend links-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="~/blogFrontEnd/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/blogFrontEnd/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/blogFrontEnd/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/blogFrontEnd/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/blogFrontEnd/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/blogFrontEnd/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/blogFrontEnd/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/blogFrontEnd/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="~/blogFrontEnd/css/aos.css">
+    <link rel="stylesheet" href="~/blogFrontEnd/css/style.css">
+    <link rel="stylesheet" href="~/blogThema/css/style.css" />
+
+
+
+    <!--BlogFrontend links-->
+
+</head>
+<body>
+
+    <header id="header">
+        <!-- NAV -->
+        <div id="nav">
+            <!-- Top Nav -->
+            <div id="nav-top" class="nav-top">
+                <div class="container">
+                    <!-- social -->
+                    <ul class="nav-social">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                    <!-- /social -->
+                    <!-- logo -->
+                    <div class="nav-logo">
+                        <a href="index.html" class="logo"><img src="~/blogThema/img/29647179-designstyle-colors-o.png" alt=""></a>
+                    </div>
+                    <!-- /logo -->
+                    <!-- search & aside toggle -->
+                    <div class="nav-btns">
+                        <button class="aside-btn"><i class="fa fa-bars"></i></button>
+                        <button class="search-btn"><i class="fa fa-search"></i></button>
+                        <div id="nav-search">
+                            <form>
+                                <input class="input" name="search" placeholder="Enter your search...">
+                            </form>
+                            <button class="nav-close search-close">
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /search & aside toggle -->
+                </div>
+            </div>
+
+            <!-- /Top Nav -->
+            <!-- Main Nav -->
+            <div id="nav-bottom">
+
+                <div class="container">
+
+                    <!-- nav -->
+                    <ul class="nav-menu">
+
+
+                        <li><a href="#">Home</a></li>
+                        <li class="menu">
+                            <a href="#">Software</a>
+                            <ul class="acilir-menu">
+                                <li><a href="#">Web Development</a></li>
+                                <li><a href="#">Artifical Intelligance</a></li>
+                                <li><a href="#">Desktop Development</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="menu">
+                            <a href="#">Data</a>
+                            <ul class="acilir-menu">
+                                <li><a href="#">Data Structures</a></li>
+                                <li><a href="#">Data Analysis</a></li>
+                                <li><a href="#">Database Management</a></li>
+                                <li><a href="#">Data Visualization</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="#">Blockchain & Web3</a></li>
+                        <li class="menu">
+                            <a href="#">Digital Marketing</a>
+                            <ul class="acilir-menu">
+                                <li><a href="#">Social Media</a></li>
+                                <li><a href="#">Website Marketing</a></li>
+                                <li><a href="#">SEO</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Cyber Security</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- /nav -->
+            </div>
+        </div>
+        <!-- /Main Nav -->
+        <!-- Aside Nav -->
+        <div id="nav-aside">
+            <ul class="nav-aside-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Web Development</a></li>
+                <li><a href="#">DataStructures</a></li>
+                <li><a href="#">Blockchain & Web3</a></li>
+                <li><a href="#">Digital Marketing</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <button class="nav-close nav-aside-close"><span></span></button>
+
+        </div>
+        @RenderBody()
+        <!-- /Aside Nav -->
+        <!-- /NAV -->
+    </header>
+    <!-- jQuery Plugins -->
+    <!--blogFrontend-->
+    <script src="~/blogFrontEnd/js/jquery-3.3.1.min.js"></script>
+    <script src="~/blogFrontEnd/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/blogFrontEnd/js/jquery-ui.js"></script>
+    <script src="~/blogFrontEnd/js/popper.min.js"></script>
+    <script src="~/blogFrontEnd/js/bootstrap.min.js"></script>
+    <script src="~/blogFrontEnd/js/owl.carousel.min.js"></script>
+    <script src="~/blogFrontEnd/js/jquery.stellar.min.js"></script>
+    <script src="~/blogFrontEnd/js/jquery.countdown.min.js"></script>
+    <script src="~/blogFrontEnd/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/blogFrontEnd/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/blogFrontEnd/js/aos.js"></script>
+    <script src="~/blogFrontEnd/js/main.js"></script>
+    <!--BlogFrontend-->
+
+</body>
+</html>
