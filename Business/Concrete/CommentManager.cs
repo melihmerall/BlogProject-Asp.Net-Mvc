@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Services;
 using System.Text;
 using System.Threading.Tasks;
 using Core.DataAccess.Concrete.EntityFramework;
@@ -11,16 +12,26 @@ namespace Business.Concrete
 {
     public class CommentManager
     {
-        EfEntityRepositoryBase<Comment, BlogContext> _repoComment = new EfEntityRepositoryBase<Comment, BlogContext>();
+        EfEntityRepositoryBase<Comment, BlogContext> repoComment = new EfEntityRepositoryBase<Comment, BlogContext>();
 
-        public List<Comment> commentList()
+        public List<Comment> CommentList()
         {
-            return _repoComment.GetList();
+            return repoComment.GetList();
         }
 
-        public List<Comment> commentByBlog(int id)
+        public List<Comment> CommentByBlog(int id)
         {
-            return _repoComment.List(x => x.BlogId == id);
+            return repoComment.List(x => x.BlogId == id);
+        }
+
+        public List<Comment> CommentByStatusTrue()
+        {
+            return repoComment.List(x => x.CommentStatus == true);
+        }
+
+        public List<Comment> CommentByStatusFalse()
+        {
+            return repoComment.List(x => x.CommentStatus == false);
         }
 
         public int CommentAdd(Comment c)
@@ -30,7 +41,22 @@ namespace Business.Concrete
             {
                 return -1;
             }
-            return _repoComment.Add(c);
+            return repoComment.Add(c);
         }
+        public void CommentStatusChangeToFalse(int id)
+        {
+            Comment comment = repoComment.Find(x => x.CommentId == id);
+            comment.CommentStatus = false;
+            repoComment.Update(comment);
+
+
+        }
+        public void CommentStatusChangeToTrue(int id)
+        {
+            Comment comment = repoComment.Find(x => x.CommentId == id);
+            comment.CommentStatus = true;
+            repoComment.Update(comment);
+        }
+
     }
 }

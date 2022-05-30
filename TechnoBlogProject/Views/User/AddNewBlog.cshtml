@@ -1,0 +1,47 @@
+﻿@model Entity.Concrete.Blog
+
+
+@{
+    ViewBag.Title = "AddNewBlog";
+    Layout = "~/Views/Shared/AuthorLayout.cshtml";
+}
+
+<h2>AddNewBlog</h2>
+
+<script src="~/Themes/ckeditor-full/ckeditor.js"></script>
+
+<form class="" method="post">
+
+
+    @Html.Label("Blog Title")
+    @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
+    <br />
+    @Html.Label("Blog Category")
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
+    <br />
+    @Html.Label("Image")
+    @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
+    <br />
+    @Html.Label("Date")
+    @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
+    <br />
+    @Html.Label("Author")
+    @Html.DropDownListFor(x => x.AuthorId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
+    <br />
+    @Html.Label("Content")
+
+
+
+    <div ass="col-md-10">
+
+        @Html.ValidationMessageFor(model => model.BlogContent, "", new { @class = "text-danger" })
+        @Html.TextAreaFor(model => model.BlogContent, new { @id = "FullDescription", @class = "form-control", @rows = "200" })
+        <script>
+            CKEDITOR.replace("FullDescription");
+        </script>
+
+    </div>
+
+    <br />
+    <button class="btn btn-info">Save</button>
+</form>

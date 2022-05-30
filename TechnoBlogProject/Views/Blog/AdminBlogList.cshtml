@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Entity.Concrete.Blog>
+@{
+    ViewBag.Title = "AdminBlogList";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Blog List</h2>
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <td>ID</td>
+        <td>TITLE</td>
+        <td>CATEGORY</td>
+        <td>DATE</td>
+        <td>DELETE</td>
+        <td>UPDATE</td>
+        <td>DETAILS</td>
+        <td>COMMENTS</td>
+    </tr>
+    @foreach (var value in Model)
+    {
+        <tr>
+            <td>@value.BlogId</td>
+            <td>@value.BlogTitle</td>
+            <td>@value.Category.CategoryName</td>
+            <td>@value.BlogDate.ToShortDateString()</td>
+            @if (@value.BlogStatus == true)
+            {
+                <td><a href="/Blog/StatusChangeToFalse/@value.BlogId" class="btn btn-danger">Remove</a></td>
+            }
+            else
+            {
+                <td><a href="/Blog/StatusChangeToTrue/@value.BlogId" class="btn btn-success">Show</a></td>
+            }
+            <td><a href="/Blog/UpdateBlog/@value.BlogId" class="btn btn-success">Update</a></td>
+            <td><a href="/Blog/BlogDetails/@value.BlogId" class="btn btn-warning">Details</a></td>
+            <td><a href="/Blog/GetCommentByBlog/@value.BlogId" class="btn btn-dark">Comments</a></td>
+
+        </tr>
+    }
+</table>
+<a href="/Blog/AddNewBlog/" class="btn btn-primary">Add New Blog</a>

@@ -17,5 +17,10 @@ namespace Business.Concrete
         {
             return repoAbout.GetList();
         }
+        public void AboutUpdate(About about)
+        {
+            repoAbout.Update(about);
+        }
+
     }
 }

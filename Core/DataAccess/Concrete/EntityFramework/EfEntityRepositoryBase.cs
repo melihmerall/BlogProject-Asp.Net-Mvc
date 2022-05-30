@@ -15,6 +15,7 @@ namespace Core.DataAccess.Concrete.EntityFramework
         where TEntity : class, new()
         where TContext : DbContext, new()
     {
+
         public int Add(TEntity entity)
         {
             TContext context = new TContext();
@@ -25,13 +26,13 @@ namespace Core.DataAccess.Concrete.EntityFramework
 
         }
 
-        public void Delete(TEntity entity)
+        public int Delete(TEntity entity)
         {
             TContext context = new TContext();
 
             var deletedEntity = context.Entry(entity);
             deletedEntity.State = EntityState.Deleted;
-            context.SaveChanges();
+            return context.SaveChanges();
 
 
         }
@@ -40,7 +41,7 @@ namespace Core.DataAccess.Concrete.EntityFramework
         {
             TContext context = new TContext();
 
-            return context.Set<TEntity>().SingleOrDefault(filter);
+            return context.Set<TEntity>().AsNoTracking().SingleOrDefault(filter);
 
         }
 
@@ -57,7 +58,16 @@ namespace Core.DataAccess.Concrete.EntityFramework
         {
             TContext context = new TContext();
 
-            return context.Set<TEntity>().Where(filter).ToList();
+            return context.Set<TEntity>().AsNoTracking().Where(filter).ToList();
+        }
+
+
+
+        public TEntity Find(Expression<Func<TEntity, bool>> filter)
+        {
+            TContext context = new TContext();
+
+            return context.Set<TEntity>().AsNoTracking().FirstOrDefault(filter);
         }
 
 
@@ -68,19 +78,19 @@ namespace Core.DataAccess.Concrete.EntityFramework
 
             return filter == null ?
                 context.Set<TEntity>().ToList() :
-                context.Set<TEntity>().Where(filter).ToList();
+                context.Set<TEntity>().AsNoTracking().Where(filter).ToList();
 
         }
 
         public void Update(TEntity entity)
         {
             TContext context = new TContext();
-
             var updateEntity = context.Entry(entity);
             updateEntity.State = EntityState.Modified;
             context.SaveChanges();
 
-
         }
+
+
     }
 }

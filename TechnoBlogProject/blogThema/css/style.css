@@ -143,7 +143,7 @@ figure {
 \*----------------------------*/
 
 .section {
-    padding-top: 150px;
+    padding-top: 40px;
 }
 
 .section-row {
@@ -1147,7 +1147,7 @@ textarea.input {
 
 .author .author-img {
     width: 100px;
-    border-radius: 20%;
+    border-radius: 50%;
     margin-bottom: 23px;
 }
 

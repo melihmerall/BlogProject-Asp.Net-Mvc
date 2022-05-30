@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls.WebParts;
 using Business.Concrete;
+using Entity.Concrete;
 
 namespace TechnoBlogProject.Controllers
 {
@@ -14,7 +15,9 @@ namespace TechnoBlogProject.Controllers
         AboutManager aboutManager = new AboutManager();
         public ActionResult Index()
         {
-            return View();
+            var aboutContent = aboutManager.GetAll();
+
+            return View(aboutContent);
         }
 
         public PartialViewResult Footer()
@@ -25,7 +28,26 @@ namespace TechnoBlogProject.Controllers
 
         public PartialViewResult WhoIsTeam()
         {
-            return PartialView();
+            AuthorManager _authorManager = new AuthorManager();
+            var authorList = _authorManager.GetAll();
+            return PartialView(authorList);
         }
+        [HttpGet]
+        public ActionResult UpdateAboutList()
+        {
+            var aboutList = aboutManager.GetAll();
+
+            return View(aboutList);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateAbout(About a)
+        {
+            aboutManager.AboutUpdate(a);
+            return RedirectToAction("UpdateAboutList");
+        }
+
+
+
     }
 }

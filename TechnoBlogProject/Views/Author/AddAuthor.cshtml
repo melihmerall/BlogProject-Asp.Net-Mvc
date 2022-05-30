@@ -1,0 +1,52 @@
+﻿@model Entity.Concrete.Author
+@{
+    ViewBag.Title = "AddAuthor";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>AddAuthor</h2>
+<br />
+
+<script src="~/Themes/ckeditor-full/ckeditor.js"></script>
+
+<form class="" method="post">
+
+
+    @Html.Label("Author Name Surname")
+    @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control" })
+    <br />
+    @Html.Label("Image")
+    @Html.TextBoxFor(x => x.AuthorImage, new { @class = "form-control" })
+    <br />
+    @Html.Label("Author Skills")
+    @Html.TextBoxFor(x => x.AuthorShortAbout, new { @placeholder = "Ex. Usage: Software / Data / Design", @class = "form-control" })
+    <br />
+    @Html.Label("Author Status")
+    @Html.TextBoxFor(x => x.AuthorTitle, new { @class = "form-control", @placeholder = "What is your Job?" })
+    <br />
+    @Html.Label("About")
+    @Html.TextBoxFor(x => x.AuthorDetail, new { @class = "form-control", @placeholder = "Who are you?" })
+    <br />
+    @Html.Label("Mail")
+    @Html.TextBoxFor(x => x.AuthorMail, new { @class = "form-control" })
+    <br />
+    @Html.Label("Password")
+    @Html.TextBoxFor(x => x.AuthorPassword, new { @class = "form-control" })
+    <br />
+    @Html.Label("Phone Number")
+    @Html.TextBoxFor(x => x.AuthorPhone, new { @placeholder = "0 500 000 00 00", @class = "form-control" })
+    <br />
+    @Html.Label("LinkedIn Url")
+    @Html.TextBoxFor(x => x.AuthorLinkedin, new { @class = "form-control" })
+    <br />
+    @Html.Label("Instagram Url")
+    @Html.TextBoxFor(x => x.AuthorInstagram, new { @class = "form-control" })
+    <br />
+    @Html.Label("Twitter Url")
+    @Html.TextBoxFor(x => x.AuthorTwitter, new { @class = "form-control" })
+
+
+
+    <br />
+    <button class="btn btn-info">Save</button>
+</form>

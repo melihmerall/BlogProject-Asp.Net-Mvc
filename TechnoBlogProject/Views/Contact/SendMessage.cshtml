@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "SendMessage";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/blogFrontEnd/images/img_4.jpg');">
+    <div class="container">
+        <div class="row same-height justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="post-entry text-center">
+                    <h1 class="">Contact Us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 mb-5">
+                <form method="post" action="#" class="p-5 bg-white">
+                    <div class="row form-group">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <label class="text-black" for="fname">First Name</label>
+                            <input type="text" id="fname" name="Name" placeholder="First Name" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="text-black" for="lname">Last Name</label>
+                            <input type="text" id="lname" name="Surname" placeholder="Last Name" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+
+                        <div class="col-md-12">
+                            <label class="text-black" for="email">Email</label>
+                            <input type="email" id="email" name="Mail" placeholder="Email" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+
+                        <div class="col-md-12">
+                            <label class="text-black" for="subject">Subject</label>
+                            <input placeholder="What is the Subject?" id="subject" name="Subject" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="text-black" for="message">Message</label>
+                            <textarea name="Message" id="message" cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <input type="submit" value="Send Message" class="btn btn-primary py-2 px-4 text-white">
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="col-md-5">
+
+                <div class="p-4 mb-3 bg-white">
+                    <p class="mb-0 font-weight-bold">Why you get contact us?</p><br />
+                    <p class="mb-4">This site is public blog and if you want to writer, you can join us but firstly you must send a messages to us. Because, Everyperson not be a author. We have to check you.</p>
+
+
+                    <p class="mb-0 font-weight-bold">Email Address</p>
+                    <p class="mb-0"><a href="#">youremail@domain.com</a></p><br />
+                    <!-- social widget -->
+                    <div class="aside-widget">
+                        <div class="section-title">
+                            <h2 class="title">Social Media</h2>
+                        </div>
+                        <div class="social-widget">
+                            <ul>
+                                <li>
+                                    <a href="#" class="social-facebook">
+                                        <i class="fa fa-facebook"></i>
+                                        <span>21.2K<br>Followers</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="social-twitter">
+                                        <i class="fa fa-twitter"></i>
+                                        <span>10.2K<br>Followers</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="social-google-plus">
+                                        <i class="fa fa-google-plus"></i>
+                                        <span>5K<br>Followers</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /social widget -->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("Footer", "About")

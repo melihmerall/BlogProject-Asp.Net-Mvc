@@ -19,7 +19,14 @@ namespace TechnoBlogProject.Controllers
 
         public PartialViewResult BlogDetailsCategoryList()
         {
-            return PartialView();
+            var categoryValues = _categoryManager.GetAll();
+            return PartialView(categoryValues);
+        }
+
+        public ActionResult AdminCategoryList()
+        {
+            var categoryList = _categoryManager.GetAll();
+            return View(categoryList);
         }
     }
 }

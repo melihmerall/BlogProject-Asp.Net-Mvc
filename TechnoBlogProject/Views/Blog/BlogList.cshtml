@@ -1,6 +1,7 @@
 ﻿@using System.Web.UI.WebControls
 @using PagedList;
 @using PagedList.Mvc
+@using HtmlHelper = PagedList.Mvc.HtmlHelper
 
 
 @model IEnumerable<Entity.Concrete.Blog>
@@ -12,25 +13,32 @@
         <!-- row -->
         <div class="row">
             <div class="col-md-8">
-
                 <!-- post -->
                 @foreach (var x in Model)
                 {
-                    <div class="post post-row">
-                        <a class="post-img" href="blog-post.html"><img src="@x.BlogImage" alt=""></a>
-                        <div class="post-body">
-                            <div class="post-category">
-                                <a href="category.html">@x.Category.CategoryName</a>
+                    if (x.BlogStatus == true)
+                    {
+                        <div class="post post-row">
+                            <a class="post-img" href="/Blog/BlogDetails/@x.BlogId"><img src="@x.BlogImage" alt=""></a>
+                            <div class="post-body">
+                                <div class="post-category">
+                                    <a href="/Blog/BlogByCategory/@x.CategoryId">@x.Category.CategoryName</a>
 
+                                </div>
+                                <h3 class="post-title"><a href="/Blog/BlogDetails/@x.BlogId">@x.BlogTitle</a></h3>
+                                <ul class="post-meta">
+                                    <li><a href="author.html">@x.Author.AuthorName</a></li>
+                                    <li>@(((DateTime)x.BlogDate).ToString("yyyy MMMM dd"))</li>
+                                </ul>
+                                <p>@x.BlogContent.Substring(0, x.BlogContent.Substring(0, 130).LastIndexOf(" "))</p>
                             </div>
-                            <h3 class="post-title"><a href="/Blog/BlogDetails/@x.BlogId">@x.BlogTitle</a></h3>
-                            <ul class="post-meta">
-                                <li><a href="author.html">@x.Author.AuthorName</a></li>
-                                <li>@(((DateTime)x.BlogDate).ToString("yyyy MMMM dd"))</li>
-                            </ul>
-                            <p>@x.BlogContent.Substring(0, x.BlogContent.Substring(0, 200).LastIndexOf(" "))</p>
                         </div>
-                    </div>
+                    }
+                    else
+                    {
+                        @Html.ValidationMessage("Blog yok");
+                    }
+
                 }
                 <!-- /post -->
 

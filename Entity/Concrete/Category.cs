@@ -14,6 +14,9 @@ namespace Entity.Concrete
         public int CategoryId { get; set; }
         [StringLength(30)]
         public string CategoryName { get; set; }
+        [StringLength(500)]
+        public string CategoryDescription { get; set; }
+        public bool CategoryStatus { get; set; }
 
         public ICollection<Blog> Blogs { get; set; }
     }

@@ -1,0 +1,53 @@
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<Entity.Concrete.Blog>
+@{
+    ViewBag.Title = "BlogByCategory";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="site-wrap">
+
+    <div class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span>Category</span>
+
+                    <h3>@ViewBag.CategoryName</h3>
+                    <p>@ViewBag.CategoryDesc</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-section bg-white">
+        <div class="container">
+            <div class="row">
+                @foreach (var value in Model)
+                {
+                    if (value.BlogStatus == true)
+                    {
+
+                        <div class="col-lg-4 mb-4">
+                            <div class="entry2">
+                                <a href="/Blog/BlogDetails/@value.BlogId"><img style="height: 250px;" src="@value.BlogImage" alt="Image" class="img-fluid rounded"></a>
+                                <div class="excerpt">
+                                    <span class="post-category text-white bg-secondary mb-3">@value.Category.CategoryName</span>
+                                    <h2><a href="/Blog/BlogDetails/@value.BlogId">@value.BlogTitle</a></h2>
+                                    <div class="post-meta align-items-center text-left clearfix">
+                                        <span class="d-inline-block mt-1"><a href="#">@value.Author.AuthorName</a></span>
+                                        <span>- @(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</span>
+                                    </div>
+
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Action("Footer", "About")

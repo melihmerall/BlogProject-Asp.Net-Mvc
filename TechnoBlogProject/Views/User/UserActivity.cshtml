@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Entity.Concrete.Author>
+
+
+<div class="col-12 grid-margin stretch-card" style="flex: auto;">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Author Details</h4>
+            <p class="card-description">
+
+            </p>
+            @using (Html.BeginForm("UpdateUserProfile", "User", FormMethod.Post))
+            {
+
+
+                foreach (var value in Model)
+                {
+
+                    <form class="forms-sample">
+                        <div class="form-group">
+                            <label for="exampleInputName1">ID</label>
+                            <input type="text" class="form-control" name="AuthorId" value="@value.AuthorId">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1">Author Name</label>
+                            <input type="text" class="form-control" name="AuthorName" value="@value.AuthorName">
+                        </div>
+                        <div class="form-group">
+                            <label>Author Image</label>
+                            <input type="file" name="img[]" class="file-upload-default">
+                            <div class="input-group col-xs-12">
+                                <input type="text" class="form-control file-upload-info" disabled name="AuthorImage" value="@value.AuthorImage">
+                                <span class="input-group-append">
+                                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Author Detail</label>
+                            <input type="email" class="form-control" name="AuthorDetail" value="@value.AuthorDetail">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Skils</label>
+                            <input type="email" class="form-control" name="AuthorShortAbout" value="@value.AuthorShortAbout">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Job</label>
+                            <input type="email" class="form-control" name="AuthorTitle" value="@value.AuthorTitle">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Phone Number</label>
+                            <input type="email" class="form-control" id="exampleInputEmail3" value="@value.AuthorPhone">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Email Address</label>
+                            <input type="email" class="form-control" name="AuthorMail" value="@value.AuthorMail">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Password</label>
+                            <input type="password" class="form-control" name="AuthorPassword" value="@value.AuthorPassword">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    </form>
+                }
+            }
+        </div>
+    </div>
+
+</div>

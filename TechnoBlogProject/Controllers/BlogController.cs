@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Business.Concrete;
+using DataAccess.Concrete.EntityFramework.Contexts;
+using Entity.Concrete;
+using Microsoft.Ajax.Utilities;
 using PagedList;
 
 namespace TechnoBlogProject.Controllers
@@ -13,6 +16,7 @@ namespace TechnoBlogProject.Controllers
         // GET: Blog
 
         BlogManager _blogManager = new BlogManager();
+
         public ActionResult Index()
         {
             return View();
@@ -30,6 +34,7 @@ namespace TechnoBlogProject.Controllers
 
         public PartialViewResult FeaturedPost()
         {
+
             //1.post
             var postTitle1 = _blogManager.GetAll().OrderByDescending(z => z.BlogId).Where(x => x.CategoryId == 1)
                 .Select(y => y.BlogTitle).FirstOrDefault();
@@ -127,10 +132,110 @@ namespace TechnoBlogProject.Controllers
 
         }
 
-        public ActionResult BlogByCategory()
+        public ActionResult BlogByCategory(int id)
         {
+            var blogListByCategory = _blogManager.GetBlogByCategoryId(id);
+            var CategoryName = _blogManager.GetBlogByCategoryId(id).Select(y => y.Category.CategoryName)
+                .FirstOrDefault();
+            ViewBag.CategoryName = CategoryName;
+
+            var CategoryDesc = _blogManager.GetBlogByCategoryId(id).Select(y => y.Category.CategoryDescription)
+                .FirstOrDefault();
+            ViewBag.CategoryDesc = CategoryDesc;
+            return View(blogListByCategory);
+        }
+
+        public ActionResult AdminBlogList()
+        {
+            var bloglist = _blogManager.GetAll();
+            return View(bloglist);
+        }
+        public ActionResult AdminBlogList2()
+        {
+            var bloglist = _blogManager.GetAll();
+            return View(bloglist);
+        }
+
+        [HttpGet]
+        public ActionResult AddNewBlog()
+        {
+            // Dropdown list. Solid hale gelecek.
+            BlogContext blogContext = new BlogContext();
+            List<SelectListItem> values = (from x in blogContext.Categories.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.CategoryName,
+                                               Value = x.CategoryId.ToString()
+                                           }).ToList();
+            ViewBag.values = values;
+            List<SelectListItem> values2 = (from x in blogContext.Authors.ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = x.AuthorName,
+                                                Value = x.AuthorId.ToString()
+                                            }).ToList();
+            ViewBag.values2 = values2;
             return View();
         }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult AddNewBlog(Blog blog)
+        {
+            _blogManager.BlogAdd(blog);
+            return RedirectToAction("AdminBlogList");
+        }
+
+
+        [HttpGet]
+        public ActionResult UpdateBlog(int id)
+        {
+            BlogContext blogContext = new BlogContext();
+            List<SelectListItem> values = (from x in blogContext.Categories.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.CategoryName,
+                                               Value = x.CategoryId.ToString()
+                                           }).ToList();
+            ViewBag.values = values;
+            List<SelectListItem> values2 = (from x in blogContext.Authors.ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = x.AuthorName,
+                                                Value = x.AuthorId.ToString()
+                                            }).ToList();
+            ViewBag.values2 = values2;
+            Blog blog = _blogManager.GetById(id);
+            return View(blog);
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult UpdateBlog(Blog blog)
+        {
+            _blogManager.BlogUpdate(blog);
+            return RedirectToAction("AdminBlogList");
+        }
+
+        public ActionResult GetCommentByBlog(int id)
+        {
+            CommentManager commentyManager = new CommentManager();
+            var commentList = commentyManager.CommentByBlog(id);
+            return View(commentList);
+        }
+
+
+
+        // Status Change
+        public ActionResult StatusChangeToTrue(int id)
+        {
+            _blogManager.CommentStatusChangeToTrue(id);
+            return RedirectToAction("AdminBlogList");
+        }
+        public ActionResult StatusChangeToFalse(int id)
+        {
+            _blogManager.CommentStatusChangeToFalse(id);
+            return RedirectToAction("AdminBlogList");
+        }
+
 
     }
 }
