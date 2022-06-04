@@ -43,8 +43,8 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IBlogDal.cs" />
+    <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Concrete\EntityFramework\Contexts\BlogContext.cs" />
     <Compile Include="Concrete\EntityFramework\EfBlogDal.cs" />
     <Compile Include="Migrations\202205180036144_mig1.cs" />
@@ -124,6 +125,38 @@
     <Compile Include="Migrations\202205291058316_mig9.cs" />
     <Compile Include="Migrations\202205291058316_mig9.designer.cs">
       <DependentUpon>202205291058316_mig9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206021200259_mig12.cs" />
+    <Compile Include="Migrations\202206021200259_mig12.designer.cs">
+      <DependentUpon>202206021200259_mig12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206021803128_DeleteTagCategories.cs" />
+    <Compile Include="Migrations\202206021803128_DeleteTagCategories.designer.cs">
+      <DependentUpon>202206021803128_DeleteTagCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206021806089_tagBlog.cs" />
+    <Compile Include="Migrations\202206021806089_tagBlog.designer.cs">
+      <DependentUpon>202206021806089_tagBlog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206031034356_commentReply.cs" />
+    <Compile Include="Migrations\202206031034356_commentReply.designer.cs">
+      <DependentUpon>202206031034356_commentReply.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206031653241_mig20.cs" />
+    <Compile Include="Migrations\202206031653241_mig20.designer.cs">
+      <DependentUpon>202206031653241_mig20.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206031923233_mig-23.cs" />
+    <Compile Include="Migrations\202206031923233_mig-23.designer.cs">
+      <DependentUpon>202206031923233_mig-23.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206032350507_mig22.cs" />
+    <Compile Include="Migrations\202206032350507_mig22.designer.cs">
+      <DependentUpon>202206032350507_mig22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206040021007_mig24.cs" />
+    <Compile Include="Migrations\202206040021007_mig24.designer.cs">
+      <DependentUpon>202206040021007_mig24.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -172,6 +205,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205291058316_mig9.resx">
       <DependentUpon>202205291058316_mig9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206021200259_mig12.resx">
+      <DependentUpon>202206021200259_mig12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206021803128_DeleteTagCategories.resx">
+      <DependentUpon>202206021803128_DeleteTagCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206021806089_tagBlog.resx">
+      <DependentUpon>202206021806089_tagBlog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206031034356_commentReply.resx">
+      <DependentUpon>202206031034356_commentReply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206031653241_mig20.resx">
+      <DependentUpon>202206031653241_mig20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206031923233_mig-23.resx">
+      <DependentUpon>202206031923233_mig-23.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206032350507_mig22.resx">
+      <DependentUpon>202206032350507_mig22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206040021007_mig24.resx">
+      <DependentUpon>202206040021007_mig24.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

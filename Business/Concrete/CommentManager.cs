@@ -4,20 +4,28 @@ using System.Linq;
 using System.Runtime.Remoting.Services;
 using System.Text;
 using System.Threading.Tasks;
+using Business.Abstract;
 using Core.DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Entity.Concrete;
 
 namespace Business.Concrete
 {
-    public class CommentManager
+    public class CommentManager:ICommentService
     {
         EfEntityRepositoryBase<Comment, BlogContext> repoComment = new EfEntityRepositoryBase<Comment, BlogContext>();
+
+
+    
+
+
+
 
         public List<Comment> CommentList()
         {
             return repoComment.GetList();
         }
+
 
         public List<Comment> CommentByBlog(int id)
         {
@@ -34,14 +42,10 @@ namespace Business.Concrete
             return repoComment.List(x => x.CommentStatus == false);
         }
 
-        public int CommentAdd(Comment c)
+        public void CommentAdd(Comment c)
         {
-            if (c.CommentText.Length <= 4 || c.CommentText.Length >= 300 || c.UserName == "" ||
-                c.Mail == "" || c.UserName.Length <= 5)
-            {
-                return -1;
-            }
-            return repoComment.Add(c);
+ 
+             repoComment.Add(c);
         }
         public void CommentStatusChangeToFalse(int id)
         {
@@ -58,5 +62,19 @@ namespace Business.Concrete
             repoComment.Update(comment);
         }
 
+        public Comment GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Commentremove(Comment comment)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CommentUpdate(Comment comment)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

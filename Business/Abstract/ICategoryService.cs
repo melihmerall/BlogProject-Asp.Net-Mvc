@@ -8,8 +8,7 @@ using Core.Utilities.Results;
 
 namespace Business.Abstract
 {
-    public interface ICategoryService
-    {
-        List<Category> GetAll();
+    public interface ICategoryService:IGenericService<Category>
+    { 
     }
 }

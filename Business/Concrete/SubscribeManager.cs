@@ -13,14 +13,37 @@ namespace Business.Concrete
     public class SubscribeManager : ISubscribeService
     {
         EfEntityRepositoryBase<Subscribe, BlogContext> repoSubscribeMail = new EfEntityRepositoryBase<Subscribe, BlogContext>();
-        public int SubscribeAdd(Subscribe mail)
-        {
-            if (mail.Mail.Length <= 10 || mail.Mail.Length >= 50)
-            {
-                return -1;
-            }
 
-            return repoSubscribeMail.Add(mail);
+        public Subscribe GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Subscribe> GetList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SubscribeAdd(Subscribe mail)
+        {
+
+
+             repoSubscribeMail.Add(mail);
+        }
+
+        public void SubscribeRemove(Subscribe subscribe)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SubscribeUpdate(Subscribe subscribe)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ISubscribeService.SubscribeAdd(Subscribe subscribe)
+        {
+            throw new NotImplementedException();
         }
     }
 }

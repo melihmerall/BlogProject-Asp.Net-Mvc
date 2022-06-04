@@ -22,5 +22,24 @@ namespace Business.Concrete
             repoAbout.Update(about);
         }
 
+        public About GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AboutAdd(About about)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AboutRemove(About about)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<About> GetList()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,35 +1,47 @@
 ﻿@model IEnumerable<Entity.Concrete.Blog>
-@foreach (var value in Model)
-{
-    <!-- section -->
-    <!-- post share -->
-    <div class="section-row">
-        <div class="post-share">
-            <a href="#" class="social-facebook"><i class="fa fa-facebook"></i><span>Share</span></a>
-            <a href="#" class="social-twitter"><i class="fa fa-twitter"></i><span>Tweet</span></a>
-            <a href="#" class="social-pinterest"><i class="fa fa-pinterest"></i><span>Pin</span></a>
-            <a href="#"><i class="fa fa-envelope"></i><span>Email</span></a>
+<!-- News With Sidebar Start -->
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+
+            <!-- News Detail Start -->
+            <div class="position-relative mb-3">
+                @foreach (var value in Model)
+                {
+                    <img class="img-fluid" src="@value.BlogImage" style="object-fit: cover;">
+                    <div class="bg-white border border-top-0 p-4">
+                        <div class="mb-3">
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                               href="/Blog/BlogByCategory/@value.CategoryId">@value.Category.CategoryName</a>
+                            <a class="text-body" >@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</a>
+                        </div>
+                        <h1 class="mb-3 text-uppercase ">@value.BlogTitle</h1>
+                        <div style="font-family:'Times New Roman', Times, serif !important; color:rgb(25, 16, 16) !important; ">
+                            <p >
+                                @Html.Raw(value.BlogContent)
+                            </p>
+                        </div>
+                        
+                    </div>
+                    <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                        <div class="d-flex align-items-center">
+                            <img class="rounded-circle mr-2" src="@value.Author.AuthorImage" width="25" height="25" alt="">
+                            <span>Auhthor By - @value.Author.AuthorName </span>
+
+                            <a class="nav-link text-body" target="_blank" href="@value.Author.AuthorTwitter"><small class="fab fa-twitter"></small></a>
+                            <a class="nav-link text-body" target="_blank" href="@value.Author.AuthorInstagram"><small class="fab fa-instagram"></small></a>
+                            <a class="nav-link text-body" target="_blank" href="@value.Author.AuthorLinkedin"><small class="fab fa-linkedin"></small></a>
+                            
+                        </div>
+                       
+                    </div>
+                }
+                <!-- News Detail End -->
+            </div>
+
+
+
         </div>
-
-    </div>
-    <!-- /post share -->
-    <!-- post content -->
-    <div class="section-row">
-        <h3>Ea vix periculis sententiae, ea blandit pericula abhorreant pri.</h3>
-        <p style="color: black; font-family: serif; font-size: 2.1rem;">@Html.Raw(value.BlogContent)</p>
-        <div>
-            <blockquote class="blockquote">
-                <p>Tırnak içinde Özlü Söz ekle</p>
-                <footer class="blockquote-footer">@value.Author.AuthorName</footer>
-            </blockquote>
         </div>
-
-
-        <figure>
-            <img src="@value.BlogImage" alt="">
-        </figure>
-
-    </div>
-
-    <!-- /post content -->
-}
+</div>

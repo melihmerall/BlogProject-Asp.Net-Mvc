@@ -1,33 +1,62 @@
 ﻿@model Entity.Concrete.Comment
 
-<div class="comment-form-wrap pt-5">
-    <h3 class="mb-5">Leave a Reply</h3>
-    @using (Html.BeginForm("ReplyComment", "Comment", FormMethod.Post))
-    {
-        <input type="hidden" name="BlogId" value="@ViewBag.id" />
+<!-- Comment Form Start -->
+<div class="mb-3">
+    <div class="section-title mb-0">
+        <h4 class="m-0 text-uppercase font-weight-bold">Leave a comment</h4>
+    </div>
+    <div class="bg-white border border-top-0 p-4">
+        @using (Html.BeginForm("ReplyComment", "Comment", FormMethod.Post))
+        {
+            <input type="hidden" name="BlogId" value="@ViewBag.id" />
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.LabelForModel("Name Surname *")
+                        @Html.TextBoxFor(x => x.UserName, new { @PlaceHolder = "Name...", @class = "form-control", @type = "text" })
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.LabelForModel("E-Mail *")
+                        @Html.TextBoxFor(x => x.Mail, new { @PlaceHolder = "Mail...", @class = "form-control", @type = "email" })
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        @Html.Label("Message *")
+                        @Html.TextAreaFor(x => x.CommentText, new { @PlaceHolder = "Message...", @class = "form-control " })
+                    </div>
+                    @Html.CheckBoxFor(x => x.CommentStatus, new { @class = "form-control ", @value = "True", @type = "hidden" })
+                </div>
 
 
-        <div class="form-group">
-            @Html.LabelForModel("Name ")
-            @Html.TextBoxFor(x => x.UserName, new { @PlaceHolder = "Name...", @class = "form-control p-5 bg-light ", @type = "text" })
-        </div>
+            </div>
+            <br />
+            <div class="col-sm-7">
+                <div class="form-group">
+                    @Html.Label("Did you like this article?")<br />
+                    <label>@Html.RadioButton("BlogRating", 1) 1</label>
+                    <label>@Html.RadioButton("BlogRating", 2) 2</label>
+                    <label>@Html.RadioButton("BlogRating", 3) 3</label>
+                    <label>@Html.RadioButton("BlogRating", 4) 4</label>
+                    <label>@Html.RadioButton("BlogRating", 5) 5</label>
+                    <label>@Html.RadioButton("BlogRating", 6) 6</label>
+                    <label>@Html.RadioButton("BlogRating", 7) 7</label>
+                    <label>@Html.RadioButton("BlogRating", 8) 8</label>
+                    <label>@Html.RadioButton("BlogRating", 9) 9</label>
+                    <label>@Html.RadioButton("BlogRating", 10) 10</label>
 
-        <div class="form-group">
-            @Html.Label("E-Mail")
-            @Html.TextBoxFor(x => x.Mail, new { @PlaceHolder = "E-Mail...", @class = "form-control p-5 bg-light ", @type = "email" })
-        </div>
+                </div>
+            </div>
 
-        <div class="form-group">
-            @Html.Label("Message ")
-            @Html.TextAreaFor(x => x.CommentText, new { @PlaceHolder = "Message...", @class = "form-control p-5 bg-light form-group " })
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Send Reply" class="btn btn-primary">
-        </div>
+            <div class="form-group mb-0">
+                <input type="submit" value="Leave a comment"
+                       class="btn btn-primary font-weight-semi-bold py-2 px-3">
+            </div>
 
+        }
 
-
-    }
+    </div>
 </div>
-
-
+<!-- Comment Form End -->

@@ -26,5 +26,11 @@ namespace Business.Concrete
         {
             repouser.Update(author);
         }
+        public List<Author> GetUserById(int id)
+        {
+            return repouser.List(x => x.AuthorId == id);
+
+        }
+
     }
 }

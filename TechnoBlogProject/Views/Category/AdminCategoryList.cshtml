@@ -113,21 +113,10 @@
 
                                         <li class="list-inline-item">
 
-                                            <img alt="Avatar" class="table-avatar" src="/AdminLTE-3.0.4/dist/img/avatar.png">
+
 
                                         </li>
 
-                                        <li class="list-inline-item">
-
-                                            <img alt="Avatar" class="table-avatar" src="/AdminLTE-3.0.4/dist/img/avatar2.png">
-
-                                        </li>
-
-                                        <li class="list-inline-item">
-
-                                            <img alt="Avatar" class="table-avatar" src="/AdminLTE-3.0.4/dist/img/avatar3.png">
-
-                                        </li>
 
                                     </ul>
 
@@ -143,11 +132,7 @@
 
                                     </div>
 
-                                    <small>
 
-                                        57% Complete
-
-                                    </small>
 
                                 </td>
 
@@ -169,7 +154,7 @@
 
                                     </a>
 
-                                    <a class="btn btn-info btn-sm" href="#">
+                                    <a class="btn btn-info btn-sm" href="/Category/CategoryEdit/@value.CategoryId">
 
                                         <i class="fas fa-pencil-alt">
 
@@ -179,25 +164,24 @@
 
                                     </a>
 
-                                    <a class="btn btn-danger btn-sm" href="#">
+                                    @if (@value.CategoryStatus == true)
+                                    {
+                                    <td><a href="/Category/StatusChangeToFalse/@value.CategoryId" class="btn btn-danger">Remove</a></td>
+                                }
+                                else
+                                {
+                                    <td><a href="/Category/StatusChangeToTrue/@value.CategoryId" class="btn btn-success">Show</a></td>
+                                }
 
-                                        <i class="fas fa-trash">
+                                    
 
-                                        </i>
-
-                                        Remove
-
-                                    </a>
-
-                                </td>
-
-                            </tr>
-                        }
+                                </tr>
+                            }
                     </tbody>
 
 
                 </table>
-
+               
             </div>
 
             <!-- /.card-body -->
@@ -207,7 +191,8 @@
         <!-- /.card -->
 
     </section>
-
+    <br />
+    <a href="/Category/AddCategory/" class="btn btn-primary">Add New Category</a>
 </body>
 
 </html>

@@ -16,23 +16,23 @@ namespace Core.DataAccess.Concrete.EntityFramework
         where TContext : DbContext, new()
     {
 
-        public int Add(TEntity entity)
+        public void Add(TEntity entity)
         {
             TContext context = new TContext();
 
             var addEntity = context.Entry(entity);
             addEntity.State = EntityState.Added;
-            return context.SaveChanges();
+            context.SaveChanges();
 
         }
 
-        public int Delete(TEntity entity)
+        public void Delete(TEntity entity)
         {
             TContext context = new TContext();
 
             var deletedEntity = context.Entry(entity);
             deletedEntity.State = EntityState.Deleted;
-            return context.SaveChanges();
+            context.SaveChanges();
 
 
         }

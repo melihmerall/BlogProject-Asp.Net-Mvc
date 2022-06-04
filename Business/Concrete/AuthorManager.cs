@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Business.Abstract;
 using Core.DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Entity.Concrete;
 
 namespace Business.Concrete
 {
-    public class AuthorManager
+    public class AuthorManager : IAuthorService
     {
         EfEntityRepositoryBase<Author, BlogContext> repoAuthor = new EfEntityRepositoryBase<Author, BlogContext>();
 
@@ -25,14 +26,11 @@ namespace Business.Concrete
         }
 
         //Add new author
-        public int AddAuthorBl(Author author)
+        public void AddAuthorBl(Author author)
         {
-            if (author.AuthorName == "" || author.AuthorShortAbout == "" || author.AuthorTitle == "")
-            {
-                return -1;
-            }
 
-            return repoAuthor.Add(author);
+
+             repoAuthor.Add(author);
         }
 
         public void UpdateAuthor(Author author)

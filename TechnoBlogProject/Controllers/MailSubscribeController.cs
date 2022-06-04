@@ -8,6 +8,7 @@ using Entity.Concrete;
 
 namespace TechnoBlogProject.Controllers
 {
+    [AllowAnonymous]
     public class MailSubscribeController : Controller
     {
         SubscribeManager subscribeManager = new SubscribeManager();

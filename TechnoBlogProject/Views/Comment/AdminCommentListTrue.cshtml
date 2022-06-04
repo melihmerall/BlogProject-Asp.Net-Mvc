@@ -1,4 +1,9 @@
-﻿@model IEnumerable<Entity.Concrete.Comment>
+﻿@using PagedList
+@using PagedList.Mvc
+
+
+
+@model IEnumerable<Entity.Concrete.Comment>
 @{
     ViewBag.Title = "AdminCommentList";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -65,3 +70,5 @@
 </body>
 
 </html>
+<a style="color: #37b69b !important;"></a>
+@Html.PagedListPager((IPagedList)Model, pageValue => Url.Action("AdminCommentListTrue", new { pageValue }), PagedListRenderOptions.PageNumbersOnly)

@@ -15,25 +15,34 @@ namespace Entity.Concrete
         public int BlogId { get; set; }
         [StringLength(100)]
         public string BlogTitle { get; set; }
-        [StringLength(100)]
+        [Url]
         public string BlogImage { get; set; }
         public DateTime BlogDate { get; set; }
+        [ AllowHtml]
         public string BlogContent { get; set; }
 
+        public int BlogClickCount { get; set; }
         public bool BlogStatus { get; set; }
-        public int BlogRate { get; set; }
+        public int BlogRating { get; set; }
 
-        //  Category Relathion
+        //  Category Relation
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-        // Author Relathion
+        // Author Relation
         public int AuthorId { get; set; }
         public virtual Author Author { get; set; }
 
-        // Comment Relathion
+        // Comment Relation
         public ICollection<Comment> Comments { get; set; }
 
+
+        // Many  to Many relation
+        public Blog()
+        {
+            this.Tags = new HashSet<Tag>();
+        }
+        public virtual ICollection<Tag> Tags { get; set; }
 
     }
 }

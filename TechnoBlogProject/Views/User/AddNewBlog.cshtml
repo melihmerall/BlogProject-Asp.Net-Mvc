@@ -6,42 +6,47 @@
     Layout = "~/Views/Shared/AuthorLayout.cshtml";
 }
 
-<h2>AddNewBlog</h2>
-
-<script src="~/Themes/ckeditor-full/ckeditor.js"></script>
-
-<form class="" method="post">
 
 
-    @Html.Label("Blog Title")
-    @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
-    <br />
-    @Html.Label("Blog Category")
-    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
-    <br />
-    @Html.Label("Image")
-    @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
-    <br />
-    @Html.Label("Date")
-    @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
-    <br />
-    @Html.Label("Author")
-    @Html.DropDownListFor(x => x.AuthorId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
-    <br />
-    @Html.Label("Content")
+<script src="~/Themes/ckEditor/ckeditor.js"></script>
+<div class="col-12 grid-margin stretch-card" style="flex: auto;">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Creat New Blog</h4>
+            <br />
+            <form class="" method="post">
+
+
+                @Html.Label("Blog Title")
+                @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
+                <br />
+                @Html.Label("Blog Category")
+                @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
+                <br />
+                @Html.Label("Image")
+                @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" ,@placeholder="Give me Main image..."})
+                <br />
+                @Html.Label("Date")
+                @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control", @placeholder="Sample Date: 00.00.0000" })
+                <br />
+                @Html.Label("Author")
+                @Html.DropDownListFor(x => x.AuthorId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
+                <br />
+                @Html.Label("Content")
 
 
 
-    <div ass="col-md-10">
+                <div ass="col-md-10">
 
-        @Html.ValidationMessageFor(model => model.BlogContent, "", new { @class = "text-danger" })
-        @Html.TextAreaFor(model => model.BlogContent, new { @id = "FullDescription", @class = "form-control", @rows = "200" })
-        <script>
-            CKEDITOR.replace("FullDescription");
-        </script>
+                    @Html.ValidationMessageFor(model => model.BlogContent, "", new { @class = "text-danger" })
+                    @Html.TextAreaFor(model => model.BlogContent, new { @id = "editor", @class = "form-control", @rows = "200" })
+                   
 
-    </div>
+                </div>
 
-    <br />
-    <button class="btn btn-info">Save</button>
-</form>
+                <br />
+                <button class="btn btn-info">Save</button>
+            </form>
+            </div>
+</div>
+</div>

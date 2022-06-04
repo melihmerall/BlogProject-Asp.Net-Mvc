@@ -7,34 +7,34 @@
 <html lang="en">
 
 <head>
-    <title>Software Paradise</title>
-    <!-- Required meta tags -->
+    <title>Software Paradise | Author</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- base:css -->
-    <link rel="stylesheet" href="~/AdminPage/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="~/AdminPage/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="~/AdminPage/css/style.css">
-    <!-- endinject -->
-    <!-- <link rel="shortcut icon" href="~/AdminPage/images/favicon.png" />-->
+
+    <link rel="stylesheet" href="~/Themes/AdminPage/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Themes/AdminPage/vendors/css/vendor.bundle.base.css">
+
+    <link rel="stylesheet" href="~/Themes/AdminPage/css/style.css">
+
 </head>
 
 <body>
     <div class="container-scroller d-flex">
         <div class="container-fluid page-body-wrapper full-page-wrapper d-flex">
-            <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
-                <div class="row flex-grow">
-                    <div class="col-lg-6 d-flex align-items-center justify-content-center">
-                        <div class="auth-form-transparent text-left p-3">
+            <div class="content-wrapper d-flex align-items-center auth px-0">
+                <div class="row w-100 mx-0">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                            <div class="brand-logo">
+
+                            </div>
+                          
                             @using (Html.BeginForm("AuthorLogin", "Login", FormMethod.Post))
                             {
-                                <div class="brand-logo">
-                                    <img src="~/AdminPage/images/logo.svg" alt="logo">
-                                </div>
+                                @*<div class="brand-logo">
+                                        <img src="~/AdminPage/images/logo.svg" alt="logo">
+                                    </div>*@
 
                                 <h4>Welcome dear author. Have a good day...</h4>
                                 <br />
@@ -62,7 +62,10 @@
                                         <input type="password" class="form-control form-control-lg border-left-0" name="AuthorPassword" placeholder="Password">
                                     </div>
                                 </div>
-
+                                <div class="my-2 d-flex justify-content-between align-items-center">
+                                    <a href="/Login/AdminLogin" class="auth-link text-black">Admin Login</a>
+                                    <a href="#signup" class="auth-link text-black">Forgot password?</a>
+                                </div>
                                 <div class="my-3">
                                     <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</button>
                                 </div>
@@ -78,25 +81,21 @@
                             }
                         </div>
                     </div>
-                    <div class="col-lg-6 login-half-bg d-none d-lg-flex flex-row">
-                        <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2022  All rights reserved.</p>
-                    </div>
+
 
                 </div>
             </div>
-            <!-- content-wrapper ends -->
+
         </div>
-        <!-- page-body-wrapper ends -->
+
     </div>
-    <!-- container-scroller -->
-    <!-- base:js -->
-    <script src="~/AdminPage/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- inject:js -->
-    <script src="~/AdminPage/js/off-canvas.js"></script>
-    <script src="~/AdminPage/js/hoverable-collapse.js"></script>
-    <script src="~/AdminPage/js/template.js"></script>
-    <!-- endinject -->
+
+    <script src="~/Themes/AdminPage/vendors/js/vendor.bundle.base.js"></script>
+
+    <script src="~/Themes/AdminPage/js/off-canvas.js"></script>
+    <script src="~/Themes/AdminPage/js/hoverable-collapse.js"></script>
+    <script src="~/Themes/AdminPage/js/template.js"></script>
+
 </body>
 
 </html>

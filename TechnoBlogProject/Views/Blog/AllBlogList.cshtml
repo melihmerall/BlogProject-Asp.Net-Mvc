@@ -1,0 +1,76 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+
+
+@model IEnumerable<Entity.Concrete.Blog>
+
+
+@{
+    ViewBag.Title = "AllBlogList";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="container" style="margin-top:3rem;">
+        <div class="row">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h4 class="m-0 text-uppercase font-weight-bold">Posts</h4>
+
+                    </div>
+                </div>
+                @foreach (var value in Model)
+                {
+                    if (value.BlogStatus == true)
+                    {
+                        <div class="col-lg-4">
+                            <div class="position-relative mb-3">
+                                <a href="/Blog/BlogDetails/@value.BlogId"> <img class=" img-fluid" src="@value.BlogImage" style="object-fit: cover; width:100% !important; height:240px; "></a>
+
+                                <div class="bg-white border border-top-0 p-3" style="min-height:150px; max-height:auto;">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                           href="/Blog/BlogByCategory/@value.Category.CategoryId">@value.Category.CategoryName</a>
+                                        <a class="text-body" href=""><small>@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</small></a>
+                                    </div>
+                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="/Blog/BlogDetails/@value.BlogId">@value.BlogTitle.</a>
+                                </div>
+                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle mr-2" src="@value.Author.AuthorImage" width="25" height="25" alt="">
+                                        <small>@value.Author.AuthorName - Blog Rating: %@value.BlogRating</small>
+                                    </div>
+                                    @*<div class="d-flex align-items-center">
+                                            <small class="ml-3"><i  class="far fa-eye mr-2"></i></small>
+                                            <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
+                                        </div>*@
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+<a style="color: #37b69b !important;">@Html.PagedListPager((IPagedList)Model, pageValue => Url.Action("AllBlogList", new { pageValue }), PagedListRenderOptions.PageNumbersOnly)</a>
+
+
+
+
+
+
+
+
+
+@Html.Action("Footer", "About")

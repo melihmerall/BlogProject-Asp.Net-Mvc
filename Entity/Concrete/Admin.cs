@@ -16,6 +16,8 @@ namespace Entity.Concrete
         public string UserName { get; set; }
         [StringLength(16)]
         public string Password { get; set; }
+        [StringLength(1)]
+        public string AdminRole { get; set; }
 
         public bool AdminStatus { get; set; }
     }

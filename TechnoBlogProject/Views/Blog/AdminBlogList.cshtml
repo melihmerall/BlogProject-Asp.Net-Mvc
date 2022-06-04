@@ -34,7 +34,15 @@
                 <td><a href="/Blog/StatusChangeToTrue/@value.BlogId" class="btn btn-success">Show</a></td>
             }
             <td><a href="/Blog/UpdateBlog/@value.BlogId" class="btn btn-success">Update</a></td>
-            <td><a href="/Blog/BlogDetails/@value.BlogId" class="btn btn-warning">Details</a></td>
+            @if (value.BlogStatus == true)
+            {
+                <td><a target="_blank" href="/Blog/BlogDetails/@value.BlogId" class="btn btn-warning">Details</a></td>
+            }
+                else
+                {
+                    <td style="background-color:antiquewhite;">Blog Was Deleted!</td>
+                }
+
             <td><a href="/Blog/GetCommentByBlog/@value.BlogId" class="btn btn-dark">Comments</a></td>
 
         </tr>

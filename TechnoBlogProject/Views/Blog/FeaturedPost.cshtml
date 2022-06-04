@@ -1,50 +1,102 @@
 ﻿
-<div class="site-section bg-light">
-    <div class="container">
-        <div>
-            <h2>Featured Posts</h2><br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-7 px-0">
+
+            
+            <div class="owl-carousel main-carousel position-relative">
+                <div class="position-relative overflow-hidden" style="height: 500px;">
+                    <img class="img-fluid h-100" src="@ViewBag.postImage1" style="object-fit: cover;">
+                    <div class="overlay">
+                        <div class="mb-2">
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                               href="/Blog/BlogDetails/@ViewBag.blogCategory1">@ViewBag.blogCategory1</a>
+                            <a class="text-white" href="">@(((DateTime)ViewBag.blogDate1).ToString("yyyy MMMM dd"))</a>
+                        </div>
+                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId1">@ViewBag.postTitle1</a>
+                    </div>
+                </div>
+                <div class="position-relative overflow-hidden" style="height: 500px;">
+                    <img class="img-fluid h-100" src="@ViewBag.postImage2" style="object-fit: cover;">
+                    <div class="overlay">
+                        <div class="mb-2">
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                               href="/Blog/BlogDetails/@ViewBag.blogCategory2">@ViewBag.blogCategory2</a>
+                            <a class="text-white" href="">@(((DateTime)ViewBag.blogDate2).ToString("yyyy MMMM dd"))</a>
+                        </div>
+                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId2">@ViewBag.postTitle2</a>
+                    </div>
+                </div>
+                <div class="position-relative overflow-hidden" style="height: 500px;">
+                    <img class="img-fluid h-100" src="@ViewBag.postImage3" style="object-fit: cover;">
+                    <div class="overlay">
+                        <div class="mb-2">
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                               href="/Blog/BlogDetails/@ViewBag.blogCategory3">@ViewBag.blogCategory3</a>
+                            <a class="text-white" href="">@(((DateTime)ViewBag.blogDate3).ToString("yyyy MMMM dd"))</a>
+                        </div>
+                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId3">@ViewBag.postTitle3</a>
+                    </div>
+                </div>
+            </div>
+         
         </div>
-        <div class="row align-items-stretch retro-layout-2">
-            <div class="col-md-4">
-                <a href="/Blog/BlogDetails/" class="h-entry mb-30 v-height gradient" style="background-image: url('@ViewBag.postImage1');">
-
-                    <div class="text">
-                        <h2>@ViewBag.postTitle1</h2>
-                        <span class="date">@(((DateTime)ViewBag.blogDate1).ToString("yyyy MMMM dd"))</span>
+        <div class="col-lg-5 px-0">
+            <div class="row mx-0">
+                <div class="col-md-6 px-0">
+                    <div class="position-relative overflow-hidden" style="height: 250px; ">
+                        <img class="img-fluid w-100 h-100" src="@ViewBag.postImage4" style="object-fit: cover;">
+                        <div class="overlay">
+                            <div style="margin-right: 30%;" class="mb-2">
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                   href="/Blog/BlogDetails/@ViewBag.blogCategory4">@ViewBag.blogCategory4</a>
+                                <a class="text-white" href=""><small>@(((DateTime)ViewBag.blogDate4).ToString("yyyy MMMM dd"))</small></a>
+                            </div>
+                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId4">@ViewBag.postTitle4</a>
+                        </div>
                     </div>
-                </a>
-                <a href="single.html" class="h-entry v-height gradient" style="background-image: url('@ViewBag.postImage2');">
-
-                    <div class="text">
-                        <h2>@ViewBag.postTitle2</h2>
-                        <span class="date">@(((DateTime)ViewBag.blogDate2).ToString("yyyy MMMM dd"))</span>
+                </div>
+                <div class="col-md-6 px-0">
+                    <div class="position-relative overflow-hidden" style="height: 250px;">
+                        <img class="img-fluid w-100 h-100" src="@ViewBag.postImage5" style="object-fit: cover;">
+                        <div class="overlay">
+                            <div style="margin-right: 30%;" class="mb-2">
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                   href="/Blog/BlogDetails/@ViewBag.blogCategory5">@ViewBag.blogCategory5</a>
+                                <a class="text-white" href=""><small>@(((DateTime)ViewBag.blogDate5).ToString("yyyy MMMM dd"))</small></a>
+                            </div>
+                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId5">@ViewBag.postTitle5</a>
+                        </div>
                     </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="single.html" class="h-entry img-5 h-100 gradient" style="background-image: url('@ViewBag.postImage5');">
-
-                    <div class="text">
-                        <h2>@ViewBag.postTitle5</h2>
-                        <span class="date">@(((DateTime)ViewBag.blogDate5).ToString("yyyy MMMM dd"))</span>
+                </div>
+                <div class="col-md-6 px-0">
+                    <div class="position-relative overflow-hidden" style="height: 250px;">
+                        <img class="img-fluid w-100 h-100" src="@ViewBag.postImage6" style="object-fit: cover;">
+                        <div class="overlay">
+                            <div style="margin-right: 30%;" class="mb-2">
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                   href="/Blog/BlogDetails/@ViewBag.blogCategory6">@ViewBag.blogCategory6</a>
+                                <a class="text-white" href=""><small>@(((DateTime)ViewBag.blogDate6).ToString("yyyy MMMM dd"))</small></a>
+                            </div>
+                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId6">@ViewBag.postTitle6</a>
+                        </div>
                     </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="single.html" class="h-entry mb-30 v-height gradient" style="background-image: url('@ViewBag.postImage3');">
-
-                    <div class="text">
-                        <h2>@ViewBag.postTitle3</h2>
-                        <span class="date">@(((DateTime)ViewBag.blogDate3).ToString("yyyy MMMM dd"))</span>
+                </div>
+                <div class="col-md-6 px-0">
+                    <div class="position-relative overflow-hidden" style="height: 250px;">
+                        <img class="img-fluid w-100 h-100" src="@ViewBag.postImage7" style="object-fit: cover;">
+                        <div class="overlay">
+                            <div style="margin-right: 30%;" class="mb-2">
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                   href="/Blog/BlogDetails/@ViewBag.blogCategory7">@ViewBag.blogCategory7</a>
+                                <a class="text-white" href=""><small>@(((DateTime)ViewBag.blogDate7).ToString("yyyy MMMM dd"))</small></a>
+                            </div>
+                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId7">@ViewBag.postTitle7</a>
+                        </div>
                     </div>
-                </a>
-                <a href="single.html" class="h-entry v-height gradient" style="background-image: url('@ViewBag.postImage4');">
+                </div>
 
-                    <div class="text">
-                        <h2>@ViewBag.postTitle4</h2>
-                        <span class="date">@(((DateTime)ViewBag.blogDate4).ToString("yyyy MMMM dd"))</span>
-                    </div>
-                </a>
             </div>
         </div>
     </div>

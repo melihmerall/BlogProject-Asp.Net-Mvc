@@ -3,14 +3,20 @@
 
 
 
-<div class="sidebar-box">
-    <h3 class="heading">Categories</h3>
-    <ul class="categories">
+<div class="mb-3">
+    <div class=" mb-0">
+        <div class="section-title">
+            <h4 style="margin-bottom:8px !important;" class="m-0 text-uppercase font-weight-bold">Categories</h4>
+        </div>
+
         @foreach (var value in Model)
         {
-            <li><a href="#">@value.CategoryName</a></li>
+            <div style="float:left;" class="mb-2 ">
+                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">@value.CategoryName</a>
+
+            </div>
         }
-    </ul>
+    </div>
 </div>
 
 

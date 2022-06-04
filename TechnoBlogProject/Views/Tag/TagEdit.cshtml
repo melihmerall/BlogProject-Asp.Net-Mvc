@@ -1,0 +1,22 @@
+﻿@model  Entity.Concrete.Tag
+
+
+@{
+    ViewBag.Title = "TagEdit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>TagEdit</h2>
+
+<form class="" method="post">
+ 
+    @Html.TextBoxFor(x => x.TagId, new { @class = "form-control" ,@type="hidden"})
+    <br />
+
+    @Html.Label("Tag Name ")
+    @Html.TextBoxFor(x => x.TagName, new { @class = "form-control" })
+    <br />
+   
+    <br />
+    <button class="btn btn-info">Save</button>
+</form>

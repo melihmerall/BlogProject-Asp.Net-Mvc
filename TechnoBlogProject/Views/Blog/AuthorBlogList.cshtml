@@ -1,0 +1,153 @@
+﻿
+
+@model  IEnumerable<Entity.Concrete.Blog>
+
+@{
+    ViewBag.Title = "BlogList";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@{
+    string color = " ";
+}
+@{
+    string caseName = "";
+}
+
+
+<br />
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">My Blogs</h4>
+            <p class="card-description">
+
+            </p>
+            <div class="table-responsive pt-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width:0%;">
+                                ID
+                            </th>
+                            <th style="width:2%;">
+                                Blog List
+                            </th>
+                            <th style="width:1%;">
+                                Blog Rate
+                            </th>
+
+                            <th style="width:1%;">
+                                Status
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var value in Model)
+                        {
+                            if (value.BlogRating >= 85)
+                            {
+                                color = "post-category text-white bg-success mb-3";
+                                caseName = "Very Good";
+                            }
+                            if (value.BlogRating >= 70 && value.BlogRating <= 84)
+                            {
+                                color = "post-category text-white bg-info mb-3";
+                                caseName = "Good";
+                            }
+                            if (value.BlogRating >= 50 && value.BlogRating <= 69)
+                            {
+                                color = "post-category text-white bg-warning mb-3";
+                                caseName = "Normal";
+                            }
+                            if (value.BlogRating >= 0 && value.BlogRating <= 49)
+                            {
+                                color = "post-category text-white bg-danger mb-3";
+                                caseName = "Bad";
+                            }
+                            <tr>
+                                <td>
+                                    @value.BlogId
+                                </td>
+                                <td>
+                                    @value.BlogTitle
+                                </td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="@value.BlogRating" aria-valuemin="0" aria-valuemax="100" style="width: @value.BlogRating%"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge @color">@caseName</span>
+                                </td>
+
+                                <td style="width:2%;" class="project-actions text-left">
+                                    @if (@value.BlogStatus == true)
+                                    {
+                                        <a class="btn btn-primary btn-sm" target="_blank" href="/Blog/BlogDetails/@value.BlogId">
+
+                                            <i class="fas fa-folder">
+
+                                            </i>
+
+                                            View
+
+                                        </a>
+                                    }
+
+
+                                    <a class="btn btn-info btn-sm" href="/User/UpdateBlog/@value.BlogId">
+
+                                        <i class="fas fa-pencil-alt">
+
+                                        </i>
+
+                                        Edit
+
+                                    </a>
+
+                                    @if (value.BlogStatus == true)
+                                    {
+                                        <a class="btn btn-danger btn-sm" href="/User/StatusChangeToFalse/@value.BlogId">
+
+                                            <i class="fas fa-trash">
+
+                                            </i>
+
+                                            Remove
+
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-success btn-sm" href="/User/StatusChangeToTrue/@value.BlogId">
+
+                                            <i class="fas fa-trash">
+
+                                            </i>
+
+                                            Show
+
+                                        </a>
+                                    }
+
+
+
+                                </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+            <br />
+            <a href="/User/AddNewBlog/" class="btn btn-success">Create New Blog</a>
+        </div>
+    </div>
+</div>
+
+

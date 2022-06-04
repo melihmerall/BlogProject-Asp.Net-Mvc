@@ -1,0 +1,22 @@
+﻿@model  IEnumerable<Entity.Concrete.Tag>
+@{
+    Layout = null;
+}
+
+<!-- This partial is a BlogList partial.  -->
+
+<div class="mb-3">
+    <div class="section-title mb-0">
+        <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
+    </div>
+    <div class="bg-white border border-top-0 p-3">
+        <div class="d-flex flex-wrap m-n1">
+            @foreach(var value in Model)
+            {
+
+
+            <a class="btn btn-sm btn-outline-success m-1">@value.TagName</a>
+            }
+        </div>
+    </div>
+</div>

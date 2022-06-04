@@ -16,9 +16,9 @@ namespace Entity.Concrete
         public string AboutContent { get; set; }
         [StringLength(500)]
         public string AboutContent2 { get; set; }
-        [StringLength(100)]
+        [Url]
         public string AboutImage1 { get; set; }
-        [StringLength(100)]
+        [Url]
         public string AboutImage2 { get; set; } 
 
     }

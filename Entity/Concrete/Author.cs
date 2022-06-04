@@ -15,7 +15,8 @@ namespace Entity.Concrete
         public int AuthorId { get; set; }
         [StringLength(50)]
         public string AuthorName { get; set; }
-        [StringLength(100)]
+        
+        
         public string AuthorImage { get; set; }
         [StringLength(250)]
         public string AuthorDetail { get; set; }

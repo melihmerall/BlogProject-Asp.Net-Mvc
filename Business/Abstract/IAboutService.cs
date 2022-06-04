@@ -9,6 +9,12 @@ namespace Business.Abstract
 {
     public interface IAboutService
     {
-        List<About> GetAll();
+        List<About> GetList();
+        
+        About GetById(int id);
+        void AboutAdd(About about);
+        void AboutRemove(About about);  
+        void AboutUpdate(About about);
+
     }
 }

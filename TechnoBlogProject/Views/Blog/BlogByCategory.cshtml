@@ -1,53 +1,78 @@
-﻿@using System.Web.UI.WebControls
+﻿@using PagedList
+@using PagedList.Mvc
+
 @model IEnumerable<Entity.Concrete.Blog>
 @{
     ViewBag.Title = "BlogByCategory";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<div class="site-wrap">
 
-    <div class="py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <span>Category</span>
+<div class="container-fluid">
+    <div class="container" style="margin-top:3rem;">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h4 class="m-0 text-uppercase font-weight-bold">@ViewBag.CategoryName</h4>
 
-                    <h3>@ViewBag.CategoryName</h3>
-                    <p>@ViewBag.CategoryDesc</p>
+                        </div>
+                    </div>
+                    @foreach (var value in Model)
+                    {
+                        if (value.BlogStatus == true)
+                        {
+
+                            <div class="col-lg-6">
+                                <div class="d-flex align-items-center bg-white mb-3" style="height: 130px;">
+                                    <a href="/Blog/BlogDetails/@value.BlogId"><img style="width:160px; height:100px;" class="img-fluid" src="@value.BlogImage" alt=""></a>
+                                    <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                        <div class="mb-2">
+                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">@value.Category.CategoryName</a>
+                                            <a style="float:left;" class="text-body" href=""><small>@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</small></a>
+                                        </div>
+                                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/Blog/BlogDetails/@value.BlogId">@value.BlogTitle</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    }
+                    
 
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="site-section bg-white">
-        <div class="container">
-            <div class="row">
-                @foreach (var value in Model)
-                {
-                    if (value.BlogStatus == true)
-                    {
+            <div class="col-lg-4">
+                @Html.Action("PopularPost","Blog")
+                <div class="mb-3">
+                    <div class="section-title mb-0">
+                        <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
+                    </div>
+                    <div class="bg-white border border-top-0 p-3">
 
-                        <div class="col-lg-4 mb-4">
-                            <div class="entry2">
-                                <a href="/Blog/BlogDetails/@value.BlogId"><img style="height: 250px;" src="@value.BlogImage" alt="Image" class="img-fluid rounded"></a>
-                                <div class="excerpt">
-                                    <span class="post-category text-white bg-secondary mb-3">@value.Category.CategoryName</span>
-                                    <h2><a href="/Blog/BlogDetails/@value.BlogId">@value.BlogTitle</a></h2>
-                                    <div class="post-meta align-items-center text-left clearfix">
-                                        <span class="d-inline-block mt-1"><a href="#">@value.Author.AuthorName</a></span>
-                                        <span>- @(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</span>
-                                    </div>
 
-                                    <p></p>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                }
+                        <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
+                            <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                            <span class="font-weight-medium">Twitter</span>
+                        </a>
+                        <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
+                            <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                            <span class="font-weight-medium">LinkedIn</span>
+                        </a>
+                        <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
+                            <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                            <span class="font-weight-medium">Instagram</span>
+                        </a>
+
+                    </div>
+                    <div>
+                    </div>
+                </div>
             </div>
+
+
         </div>
     </div>
 </div>
-
 @Html.Action("Footer", "About")

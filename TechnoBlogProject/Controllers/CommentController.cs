@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Business.Concrete;
 using Entity.Concrete;
+using PagedList.Mvc;
+using PagedList;
 
 namespace TechnoBlogProject.Controllers
 {
@@ -12,6 +14,8 @@ namespace TechnoBlogProject.Controllers
     {
         CommentManager commentManager = new CommentManager();
         // GET: Comment
+
+        [AllowAnonymous]
         public PartialViewResult CommentList(int id)
         {
 
@@ -19,12 +23,14 @@ namespace TechnoBlogProject.Controllers
 
             return PartialView(commentList);
         }
+        [AllowAnonymous]
         [HttpGet]
         public PartialViewResult ReplyComment(int id)
         {
             ViewBag.id = id;
             return PartialView();
         }
+        [AllowAnonymous]
         [HttpPost]
         public RedirectToRouteResult ReplyComment(Comment c)
         {
@@ -34,9 +40,10 @@ namespace TechnoBlogProject.Controllers
             return RedirectToAction("BlogDetails/" + c.BlogId, "Blog", new { area = "" });
         }
 
-        public ActionResult AdminCommentListTrue()
+        public ActionResult AdminCommentListTrue(int pageValue = 1)
         {
-            var commentList = commentManager.CommentByStatusTrue();
+          
+            var commentList = commentManager.CommentByStatusTrue().ToPagedList(pageValue, 10);
 
             return View(commentList);
         }

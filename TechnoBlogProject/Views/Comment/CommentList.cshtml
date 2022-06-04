@@ -1,44 +1,50 @@
 ﻿@model IEnumerable<Entity.Concrete.Comment>
 @{
     var count = 0;
+
     foreach (var c in Model)
     {
-        count++;
+        if (c.CommentStatus == true)
+        {
+            count++;
+        }
+
     }
 
     <!-- post comments -->
-    <div class="section-row">
-        <div class="section-title">
-            <h3 class="title"> Total Reply - @count</h3>
-        </div>
-        @foreach (var value in Model)
-        {
-            <div class="section-title">
-                <h3 class="title"> Reply </h3>
-            </div>
 
-            <div class="post-comments">
-                <!-- comment -->
-                <div class="media">
-                    <div class="media-left">
-                        <img class="media-object" src="~/blogThema/img/avatar-2.jpg" alt="">
-                    </div>
-                    <div class="media-body">
-                        <div class="media-heading">
-                            <h4>@value.UserName</h4>
-                            <span class="time">@(((DateTime)value.CommentDate).ToString("yyyy MMMM dd"))</span>
-                        </div>
-                        <p>@value.CommentText</p>
-
-                    </div>
-                </div>
-            </div>
-        }
-
-    </div>
     <div style="border-top: 3px #e8eaed solid;"></div>
 
     <br />
-    @Html.Action("ReplyComment", "Comment")
+
     <!-- /post comments -->
 }
+<!-- Comment List Start -->
+<div class="mb-3">
+    <div class="section-title mb-0">
+        <h4 class="m-0 text-uppercase font-weight-bold">Total Comments - @count</h4>
+    </div>
+    @foreach (var value in Model)
+    {
+        if (value.CommentStatus == true)
+        {
+
+            <div class="bg-white border border-top-0 p-4">
+                <div class="media">
+
+                    <div class="media-body">
+                        <h6><a class="text-secondary font-weight-bold" href="">@value.UserName</a> <small><i>@(((DateTime)value.CommentDate).ToString("yyyy MMMM dd"))</i></small></h6>
+                        <p>
+                            @value.CommentText
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        }
+    }
+</div>
+ @Html.Action("ReplyComment", "Comment")

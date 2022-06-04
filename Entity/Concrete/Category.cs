@@ -10,6 +10,9 @@ namespace Entity.Concrete
 {
     public class Category : IEntity
     {
+
+
+
         [Key]
         public int CategoryId { get; set; }
         [StringLength(30)]
@@ -18,6 +21,9 @@ namespace Entity.Concrete
         public string CategoryDescription { get; set; }
         public bool CategoryStatus { get; set; }
 
+
         public ICollection<Blog> Blogs { get; set; }
+        
+
     }
 }

@@ -12,15 +12,18 @@ namespace TechnoBlogProject.Controllers
     {
         // GET: Contact
         ContactManager contactManager = new ContactManager();
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult SendMessage()
         {
             return View();
         }
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult SendMessage(Contact c)
         {
@@ -30,7 +33,7 @@ namespace TechnoBlogProject.Controllers
 
         public ActionResult MessageBox()
         {
-            var messageList = contactManager.GetAll();
+            var messageList = contactManager.GetList();
             return View(messageList);
         }
 

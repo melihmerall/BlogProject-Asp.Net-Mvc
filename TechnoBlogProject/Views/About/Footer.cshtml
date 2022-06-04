@@ -1,76 +1,67 @@
 ﻿
-@model IEnumerable<Entity.Concrete.About>
+@model IEnumerable<Entity.Concrete.Category>
 
-<!-- FOOTER -->
-<footer id="footer">
-    <!-- container -->
-    <div class="container">
-        <!-- row -->
-        <div class="row">
-            @foreach (var x in Model)
-            {
+<div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
+    <div class="row py-4">
+        <div class="col-lg-3 col-md-6 mb-6">
+
+            <h5 class=" mb-3 text-white text-uppercase font-weight-bold">Follow Us</h5>
+            <div class="d-flex justify-content-start">
+                <a target="_blank" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://twitter.com/melihmerall"><i class="fab fa-twitter"></i></a>
+
+                <a target="_blank" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.linkedin.com/in/melihmerall/"><i class="fab fa-linkedin-in"></i></a>
+                <a target="_blank" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.instagram.com/melih.merall"><i class="fab fa-instagram"></i></a>
+
+            </div>
+            <br />
+            <a  target="_blank" class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/Login/AuthorLogin/">Author Login </a>
+            <br />
+
+            <br />
+            <a target="_top" class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/Contact/SendMessage/">Contact </a>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-6 "style="margin-right:35px !important;">
+         
+
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">About Us</h5>
+            <div class="mb-3">
+                <div class="mb-2">
+
+ 
+                </div>
+                <a class="small text-body text-uppercase font-weight-medium">WE ARE WRITERS WHO LOVE TO DO RESEARCH AND PUT OUR WORK IN WRITING. WE AIM TO CONVEY INFORMATION TO PEOPLE IN THE INTERNET WORLD WITH OUR EVER-GROWING OF WRITERS. YOU CAN JOIN US...</a>
+            </div>
+            
+        </div>
+        <div class="col-lg-5 col-md-6 mb-6">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
+
+            <div class="m-n1">
+                @foreach (var value in Model)
+                {
+                    if (value.CategoryStatus == true)
+                    {
+                        <div class="m-n1">
+                            <a style="float:left;" href="/Blog/BlogByCategory/@value.CategoryId" class="btn btn-sm btn-secondary m-1">@value.CategoryName</a>
 
 
-                <div class="col-md-5">
-                    <div class="footer-widget">
-                        <div class="footer-logo">
-                            <a href="index.html" class="logo"><img src="~/blogThema/img/logo-small.png" alt="technovblog"></a>
                         </div>
-                        <a style="color: aliceblue;" href="/About/Index/">About Us</a>
-                        <br />
-                        <br />
-                        <p>
-                            @x.AboutContent
+                    }
 
-                        </p>
-                        <ul class="contact-social">
-                            <li><a href="#" class="social-twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="social-google-plus"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" class="social-instagram"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            }
-            <div class="col-md-7">
-                <div class="footer-widget">
-                    <h3 class="footer-title">Tags</h3>
-                    <div class="tags-widget">
-                        <ul>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                            <li><a href="#">Tags</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                }
 
 
-        </div>
-        <!-- /row -->
-        <!-- row -->
-        <div class="footer-bottom row">
-            <div class="col-md-12 ">
-                <div class="footer-copyright" style="font-size: initial; font-weight: bold">
-                    Copyright &copy;
-                    <script>document.write(new Date().getFullYear());</script> All rights reserved.
-                </div>
             </div>
         </div>
-        <!-- /row -->
+        
     </div>
-    <!-- /container -->
-</footer>
-<!-- /FOOTER -->
+</div>
+<div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
+    <p class="m-0 text-center">
+        &copy; <a style="color: #37b69b !important;" href="#">Software Paradise</a>. All Rights Reserved.
+
+        
+
+    </p>
+</div>

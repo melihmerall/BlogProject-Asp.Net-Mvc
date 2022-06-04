@@ -7,7 +7,7 @@
 <h2>AuthorEdit</h2>
 <br />
 
-<form class="" method="post">
+<form class="" method="post" enctype="multipart/form-data">
     @Html.Label("Id")
     @Html.TextBoxFor(x => x.AuthorId, new { @class = "form-control" })
     <br />
@@ -15,8 +15,10 @@
     @Html.Label("Author Name Surname")
     @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control" })
     <br />
-    @Html.Label("Image")
-    @Html.TextBoxFor(x => x.AuthorImage, new { @class = "form-control" })
+     @Html.Label("Image")
+    <input type="file" name="AuthorImage" value="" />
+   
+    @*@Html.TextBoxFor(x => x.AuthorImage, new { @class = "form-control",@type="file",@name="AuthorImage" })*@
     <br />
     @Html.Label("Author Skills")
     @Html.TextBoxFor(x => x.AuthorShortAbout, new { @placeholder = "Ex. Usage: Software / Data / Design", @class = "form-control" })

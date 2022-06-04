@@ -5,26 +5,25 @@
 
 
 
-    <!-- PAGE HEADER - FOTO BAŞLIK -->
-    <div id="post-header" class="page-header">
-        <div class="page-header-bg" style="background-image: url('@value.BlogImage'); background-size: cover;" data-stellar-background-ratio="0.5" data-parallax="scroll" data-ios-fix="true" data-over-scroll-fix="true" data-android-fix="true"></div>
+    <!-- Breaking News Start -->
+    <div class="container-fluid mt-5 mb-3 pt-3">
         <div class="container">
-            <div class="row">
-                <div class="col-md-10">
-                    <input type="hidden" name="BlogId" value="@ViewBag.id" />
-                    <div class="post-category">
-                        <a href="category.html">@value.Category.CategoryName</a>
+            <div class="row align-items-center">
+                <div style="margin-left:0% !important;" class="col-10 br">
+                    <div class="d-flex justify-content-between">
+                        <div  class="section-title border-right-0 mb-0" style="width: 250px;">
+                            <h4 style="margin-right:20px !important;" class="m-0 text-uppercase font-weight-bold">announcement</h4>
+                        </div>
+                        <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center bg-white border border-left-0"
+                             style="width: calc(100% - 180px); padding-right: 100px;">
+                            <div class="text-truncate"><a style="margin-left:20px !important;" class="text-secondary text-uppercase font-weight-semi-bold" >Just contact us for advertising and cooperation.</a></div>
+                            <div class="text-truncate"><a style="margin-left:20px !important;" class="text-secondary text-uppercase font-weight-semi-bold" >Science is everything...</a></div>
+                            <div class="text-truncate"><a style="margin-left:20px !important;" class="text-secondary text-uppercase font-weight-semi-bold" >You can apply to join our writer staff and earn money.</a></div>
+                        </div>
                     </div>
-                    <h1>@value.BlogTitle</h1>
-                    <ul class="post-meta">
-                        <li><a href="author.html">@value.Author.AuthorName</a></li>
-                        <li> @(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</li>
-                        <li><i class="fa fa-comments"></i> 3</li>
-                        <li><i class="fa fa-eye"></i> 807</li>
-                    </ul>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- Breaking News End -->
 }

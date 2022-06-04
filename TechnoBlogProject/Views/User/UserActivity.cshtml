@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Entity.Concrete.Author>
 
 
+
 <div class="col-12 grid-margin stretch-card" style="flex: auto;">
     <div class="card">
         <div class="card-body">
@@ -8,7 +9,7 @@
             <p class="card-description">
 
             </p>
-            @using (Html.BeginForm("UpdateUserProfile", "User", FormMethod.Post))
+            @using (Html.BeginForm("UpdateUserProfile", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
 
 
@@ -16,51 +17,67 @@
                 {
 
                     <form class="forms-sample">
-                        <div class="form-group">
-                            <label for="exampleInputName1">ID</label>
+                        <div hidden class="form-group">
+                            <label>ID</label>
                             <input type="text" class="form-control" name="AuthorId" value="@value.AuthorId">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputName1">Author Name</label>
+                            <label>Author Name</label>
                             <input type="text" class="form-control" name="AuthorName" value="@value.AuthorName">
                         </div>
-                        <div class="form-group">
-                            <label>Author Image</label>
-                            <input type="file" name="img[]" class="file-upload-default">
-                            <div class="input-group col-xs-12">
-                                <input type="text" class="form-control file-upload-info" disabled name="AuthorImage" value="@value.AuthorImage">
+                        <div hidden class="form-group">
+                            <label for="uploadFile">Author Image</label>
+                            <input type="file" name="AuthorImage" class="file-upload-default">
+                            <div hidden class="input-group col-xs-12">
+                                <input type="text" class="form-control file-upload-info" name="AuthorImage" value="@value.AuthorImage">
                                 <span class="input-group-append">
                                     <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                                 </span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail3">Author Detail</label>
-                            <input type="email" class="form-control" name="AuthorDetail" value="@value.AuthorDetail">
+                            <label>Author Detail</label>
+                            <input type="text" class="form-control" name="AuthorDetail" value="@value.AuthorDetail">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail3">Skils</label>
-                            <input type="email" class="form-control" name="AuthorShortAbout" value="@value.AuthorShortAbout">
+                            <label>Skils</label>
+                            <input type="text" class="form-control" name="AuthorShortAbout" value="@value.AuthorShortAbout">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail3">Job</label>
-                            <input type="email" class="form-control" name="AuthorTitle" value="@value.AuthorTitle">
+                            <label>Job</label>
+                            <input type="text" class="form-control" name="AuthorTitle" value="@value.AuthorTitle">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail3">Phone Number</label>
-                            <input type="email" class="form-control" id="exampleInputEmail3" value="@value.AuthorPhone">
+                            <label>Phone Number</label>
+                            <input type="text" class="form-control" name="AuthorPhone" value="@value.AuthorPhone">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail3">Email Address</label>
+                            <label>Email Address</label>
                             <input type="email" class="form-control" name="AuthorMail" value="@value.AuthorMail">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword4">Password</label>
+                            <label>Password</label>
                             <input type="password" class="form-control" name="AuthorPassword" value="@value.AuthorPassword">
+                        </div>
+                        <div class="form-group">
+                            <label>Instagram</label>
+                            <input type="text" class="form-control" placeholder="Give me URL " name="AuthorInstagram" value="@value.AuthorInstagram">
+                        </div>
+                        <div class="form-group">
+                            <label>Twitter</label>
+                            <input type="text" class="form-control" placeholder="Give me URL " name="AuthorTwitter" value="@value.AuthorTwitter">
+                        </div>
+                        <div class="form-group">
+                            <label>LinkedIn</label>
+                            <input type="text" class="form-control" placeholder="Give me URL " name="AuthorLinkedin" value="@value.AuthorLinkedin">
+                        </div>
+                        <div hidden class="form-group">
+                            <label>AuthorSatus</label>
+                            <input type="text" class="form-control" name="AuthorStatus" value="@value.AuthorStatus.ToString()">
                         </div>
 
 
-                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button type="submit" class="btn btn-primary mr-2">Save</button>
                     </form>
                 }
             }

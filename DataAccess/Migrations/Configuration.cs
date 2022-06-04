@@ -1,5 +1,6 @@
 ﻿namespace DataAccess.Migrations
 {
+    using Entity.Concrete;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,10 +15,7 @@
 
         protected override void Seed(DataAccess.Concrete.EntityFramework.Contexts.BlogContext context)
         {
-            //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
         }
     }
 }

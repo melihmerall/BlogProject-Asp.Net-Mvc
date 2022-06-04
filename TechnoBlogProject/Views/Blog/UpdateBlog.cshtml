@@ -3,24 +3,33 @@
     ViewBag.Title = "UpdateBlog";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-<script src="~/Themes/ckeditor-full/ckeditor.js"></script>
+<script src="~/Themes/ckeditor/ckeditor.js"></script>
 <h2>UpdateBlog</h2>
 
 <form class="" method="post">
-    @Html.Label("Blog Title")
-    @Html.TextBoxFor(x => x.BlogId, new { @class = "form-control" })
-    <br />
+    @Html.TextBoxFor(x => x.BlogRating, new { @class = "form-control", type = "hidden" })
+    @Html.TextBoxFor(x => x.BlogId, new { @class = "form-control", type = "hidden" })
     @Html.Label("Blog Title")
     @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BlogTitle)
+    <br />
+
+    @Html.TextBoxFor(x => x.BlogRating, new { @class = "form-control", type = "hidden" })
     <br />
     @Html.Label("Blog Category")
     @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryId)
     <br />
     @Html.Label("Image")
     @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BlogImage)
     <br />
     @Html.Label("Date")
     @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.BlogDate)
+    <br />
+
+    @Html.TextBoxFor(x => x.BlogStatus, new { @class = "form-control", @type = "hidden" })
     <br />
     @Html.Label("Author")
     @Html.DropDownListFor(x => x.AuthorId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })

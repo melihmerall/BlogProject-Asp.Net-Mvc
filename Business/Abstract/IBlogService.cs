@@ -8,8 +8,8 @@ using Entity.Concrete;
 
 namespace Business.Abstract
 {
-    public interface IBlogService
+    public interface IBlogService: IGenericService<Blog>
     {
-        List<Blog> GetAll();
+
     }
 }

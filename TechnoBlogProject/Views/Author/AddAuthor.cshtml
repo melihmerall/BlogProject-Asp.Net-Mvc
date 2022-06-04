@@ -9,32 +9,41 @@
 
 <script src="~/Themes/ckeditor-full/ckeditor.js"></script>
 
-<form class="" method="post">
+<form class="" method="post" enctype="multipart/form-data">
 
 
     @Html.Label("Author Name Surname")
     @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorName)
     <br />
     @Html.Label("Image")
-    @Html.TextBoxFor(x => x.AuthorImage, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorImage)
+    <input type="file" name="AuthorImage" value="" />
+    <br />
     <br />
     @Html.Label("Author Skills")
     @Html.TextBoxFor(x => x.AuthorShortAbout, new { @placeholder = "Ex. Usage: Software / Data / Design", @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorShortAbout)
     <br />
     @Html.Label("Author Status")
     @Html.TextBoxFor(x => x.AuthorTitle, new { @class = "form-control", @placeholder = "What is your Job?" })
+    @Html.ValidationMessageFor(x => x.AuthorTitle)
     <br />
     @Html.Label("About")
     @Html.TextBoxFor(x => x.AuthorDetail, new { @class = "form-control", @placeholder = "Who are you?" })
+    @Html.ValidationMessageFor(x => x.AuthorDetail)
     <br />
     @Html.Label("Mail")
     @Html.TextBoxFor(x => x.AuthorMail, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorMail)
     <br />
     @Html.Label("Password")
     @Html.TextBoxFor(x => x.AuthorPassword, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorPassword)
     <br />
     @Html.Label("Phone Number")
     @Html.TextBoxFor(x => x.AuthorPhone, new { @placeholder = "0 500 000 00 00", @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorPhone)
     <br />
     @Html.Label("LinkedIn Url")
     @Html.TextBoxFor(x => x.AuthorLinkedin, new { @class = "form-control" })

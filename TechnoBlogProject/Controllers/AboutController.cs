@@ -9,21 +9,24 @@ using Entity.Concrete;
 
 namespace TechnoBlogProject.Controllers
 {
+    [AllowAnonymous]
     public class AboutController : Controller
     {
         // GET: About
         AboutManager aboutManager = new AboutManager();
+        CategoryManager categoryManager = new CategoryManager();
+       
         public ActionResult Index()
         {
             var aboutContent = aboutManager.GetAll();
 
             return View(aboutContent);
         }
-
+      
         public PartialViewResult Footer()
         {
-            var aboutContentList = aboutManager.GetAll();
-            return PartialView(aboutContentList);
+            var categoryList = categoryManager.GetList();
+            return PartialView(categoryList);
         }
 
         public PartialViewResult WhoIsTeam()

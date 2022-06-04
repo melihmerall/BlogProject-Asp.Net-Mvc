@@ -16,10 +16,6 @@ namespace Business.Concrete
 
     {
         EfEntityRepositoryBase<Blog, BlogContext> _repoblog = new EfEntityRepositoryBase<Blog, BlogContext>();
-        public List<Blog> GetAll()
-        {
-            return _repoblog.GetList();
-        }
 
         public Blog GetById(int id)
         {
@@ -35,32 +31,18 @@ namespace Business.Concrete
         {
             return _repoblog.List(x => x.AuthorId == id);
         }
-
+        
         public List<Blog> GetBlogByCategoryId(int id)
         {
             return _repoblog.List(x => x.CategoryId == id);
         }
 
-        public int BlogAdd(Blog blog)
-        {
-            if (blog.BlogTitle == "" || blog.BlogImage == "" || blog.BlogContent == "" || blog.BlogTitle == "" ||
-                blog.BlogTitle.Length <= 5 || blog.BlogContent.Length <= 200)
-            {
-                return -1;
-            }
 
-            return _repoblog.Add(blog);
-        }
 
-        public int DeleteBlog(int p)
+        public void DeleteBlog(int p)
         {
             Blog blog = _repoblog.Find(x => x.BlogId == p);
-            return _repoblog.Delete(blog);
-        }
-
-        public void BlogUpdate(Blog blog)
-        {
-            _repoblog.Update(blog);
+             _repoblog.Delete(blog);
         }
 
         // Change Status - false or true
@@ -78,7 +60,25 @@ namespace Business.Concrete
 
 
         }
+        public List<Blog> GetList()
+        {
+            return _repoblog.GetList();
+        }
 
+        public void TAdd(Blog t)
+        {
+            _repoblog.Add(t);
+        }
+
+        public void TRemove(Blog t)
+        {
+
+        }
+
+        public void TUpdate(Blog t)
+        {
+            _repoblog.Update(t);
+        }
     }
 
 }

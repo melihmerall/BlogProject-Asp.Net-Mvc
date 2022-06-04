@@ -14,6 +14,7 @@ namespace Entity.Concrete
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int CommentId { get; set; }
+        public int ReplyCommentId { get; set; }
         [StringLength(50)]
         public string UserName { get; set; }
         [StringLength(50)]
@@ -24,7 +25,8 @@ namespace Entity.Concrete
 
         public DateTime CommentDate { get; set; }
 
-        public bool CommentStatus { get; set; }
+        public bool CommentStatus { get; set; } = true;
+        public int BlogRating { get; set; }
 
         public int BlogId { get; set; }
         public virtual Blog Blogs { get; set; }
