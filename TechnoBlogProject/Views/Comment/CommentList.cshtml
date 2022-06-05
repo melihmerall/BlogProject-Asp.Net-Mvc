@@ -13,10 +13,10 @@
 
     <!-- post comments -->
 
-    <div style="border-top: 3px #e8eaed solid;"></div>
+    
+
 
     <br />
-
     <!-- /post comments -->
 }
 <!-- Comment List Start -->
@@ -33,7 +33,10 @@
                 <div class="media">
 
                     <div class="media-body">
-                        <h6><a class="text-secondary font-weight-bold" href="">@value.UserName</a> <small><i>@(((DateTime)value.CommentDate).ToString("yyyy MMMM dd"))</i></small></h6>
+                        <h6>
+                            <a class="text-secondary font-weight-bold" href="">@value.UserName</a>
+                            <small><i>@(((DateTime)value.CommentDate).ToString("yyyy MMMM dd"))</i></small>
+                        </h6>
                         <p>
                             @value.CommentText
                         </p>
@@ -47,4 +50,4 @@
         }
     }
 </div>
- @Html.Action("ReplyComment", "Comment")
+@Html.Action("ReplyComment", "Comment")

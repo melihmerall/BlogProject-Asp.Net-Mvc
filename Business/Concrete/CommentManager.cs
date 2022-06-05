@@ -15,12 +15,6 @@ namespace Business.Concrete
     {
         EfEntityRepositoryBase<Comment, BlogContext> repoComment = new EfEntityRepositoryBase<Comment, BlogContext>();
 
-
-    
-
-
-
-
         public List<Comment> CommentList()
         {
             return repoComment.GetList();

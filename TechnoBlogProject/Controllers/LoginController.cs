@@ -15,11 +15,13 @@ namespace TechnoBlogProject.Controllers
 
         // GET: Login
         [HttpGet]
+    
         public ActionResult AuthorLogin()
         {
             return View();
         }
         [HttpPost]
+       
         public ActionResult AuthorLogin(Author a)
         {
             BlogContext _blogContext = new BlogContext();

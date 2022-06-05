@@ -18,6 +18,7 @@ namespace TechnoBlogProject.Controllers
         [AllowAnonymous]
         public PartialViewResult CommentList(int id)
         {
+            
 
             var commentList = commentManager.CommentByBlog(id);
 

@@ -20,7 +20,8 @@ namespace TechnoBlogProject.Controllers
         // GET: AuthorLogin
         UserProfileManager profileManager = new UserProfileManager();
         BlogManager _blogManager = new BlogManager();
-       
+
+        [Route("author")]
         public ActionResult Index()
         {
             return View();
@@ -92,6 +93,17 @@ namespace TechnoBlogProject.Controllers
             ValidationResult results = blogValidator.Validate(b);
             if (results.IsValid)
             {
+                if (Request.Files.Count >= 0)
+                {
+
+
+                    string fileName = Path.GetFileName(Request.Files[0].FileName);
+                    string extension = Path.GetExtension(Request.Files[0].FileName);
+                    string url = "~/Image/" + fileName + extension;
+                    Request.Files[0].SaveAs(Server.MapPath(url));
+                    b.BlogImage = "/Image/" + fileName + extension;
+
+                }
                 _blogManager.TUpdate(b);
                 return RedirectToAction("BlogList","User");
             }
@@ -202,6 +214,7 @@ namespace TechnoBlogProject.Controllers
             var users = profileManager.GetUserById(id);
             return View(users);
         }
+        
 
     }
 }

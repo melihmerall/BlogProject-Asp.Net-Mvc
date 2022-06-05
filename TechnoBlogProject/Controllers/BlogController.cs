@@ -28,6 +28,7 @@ namespace TechnoBlogProject.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet]
         public PartialViewResult BlogList(int pageValue = 1)
         {
 
@@ -40,12 +41,14 @@ namespace TechnoBlogProject.Controllers
             return PartialView(bloglist);
         }
         [AllowAnonymous]
+        [HttpGet]
         public ActionResult AllBlogList(int pageValue = 1)
         {
             var allBlogList = _blogManager.GetList().ToPagedList(pageValue, 9);
             return View(allBlogList);
         }
         [AllowAnonymous]
+        [HttpGet]
         public PartialViewResult FeaturedPost()
         {
 
@@ -187,6 +190,7 @@ namespace TechnoBlogProject.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet]
         public PartialViewResult OtherFeaturedPost(int pageValue = 1)
         {
             // viewbag , 10 farklı blog çektir. rate oranına göre ve true olanları.
@@ -198,6 +202,7 @@ namespace TechnoBlogProject.Controllers
             return PartialView(featuredPosts);
         }
         [AllowAnonymous]
+        [HttpGet]
         public PartialViewResult PopularPost(int pageValue = 1)
         {
             var popularPosts = _blogManager.GetList().ToPagedList(pageValue, 10).OrderByDescending(c => c.BlogId);
@@ -205,12 +210,14 @@ namespace TechnoBlogProject.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet]
         public ActionResult BlogDetails()
         {
 
             return View();
         }
         [AllowAnonymous]
+        [HttpGet]
         public PartialViewResult BlogCover(int id)
 
         {
@@ -220,13 +227,32 @@ namespace TechnoBlogProject.Controllers
 
         }
         [AllowAnonymous]
+        [HttpGet]
         public PartialViewResult BlogReadAll(int id)
         {
+
+            var authorName = _blogManager.GetBlogByIdList(id).Where(x => x.BlogId == id).Select(y => y.Author.AuthorName).FirstOrDefault();
+            var authorTitle = _blogManager.GetBlogByIdList(id).Where(x => x.BlogId == id).Select(y => y.Author.AuthorTitle).FirstOrDefault();
+            var authorMail = _blogManager.GetBlogByIdList(id).Where(x => x.BlogId == id).Select(y => y.Author.AuthorMail).FirstOrDefault();
+            var authorTwitter = _blogManager.GetBlogByIdList(id).Where(x => x.BlogId == id).Select(y => y.Author.AuthorTwitter).FirstOrDefault();
+            var authorInstagram = _blogManager.GetBlogByIdList(id).Where(x => x.BlogId == id).Select(y => y.Author.AuthorTwitter).FirstOrDefault();
+            var authorLinkedin = _blogManager.GetBlogByIdList(id).Where(x => x.BlogId == id).Select(y => y.Author.AuthorTwitter).FirstOrDefault();
+            var authorImage = _blogManager.GetBlogByIdList(id).Where(x => x.BlogId == id).Select(y => y.Author.AuthorImage).FirstOrDefault();
+            ViewBag.authorName = authorName;
+            ViewBag.authorTitle = authorTitle;
+            ViewBag.authorMail = authorMail;
+            ViewBag.authorTwitter = authorMail;
+            ViewBag.authorInstagram = authorInstagram;
+            ViewBag.authorLinkedin = authorLinkedin;
+            ViewBag.authorImage = authorImage;
+
+            ViewBag.authorName = authorName;
             var blogDetailsList = _blogManager.GetBlogByIdList(id);
             return PartialView(blogDetailsList);
 
         }
         [AllowAnonymous]
+        [HttpGet]
         public ActionResult BlogByCategory(int id)
         {
 
@@ -248,7 +274,7 @@ namespace TechnoBlogProject.Controllers
         }
 
 
-
+        [HttpGet]
         public ActionResult AdminBlogList()
         {
             var bloglist = _blogManager.GetList();
@@ -376,6 +402,17 @@ namespace TechnoBlogProject.Controllers
             ValidationResult results = blogValidator.Validate(b);
             if (results.IsValid)
             {
+                if (Request.Files.Count >= 0)
+                {
+
+
+                    string fileName = Path.GetFileName(Request.Files[0].FileName);
+                    string extension = Path.GetExtension(Request.Files[0].FileName);
+                    string url = "~/Image/" + fileName + extension;
+                    Request.Files[0].SaveAs(Server.MapPath(url));
+                    b.BlogImage = "/Image/" + fileName + extension;
+
+                }
                 _blogManager.TUpdate(b);
                 return RedirectToAction("AdminBlogList");
             }

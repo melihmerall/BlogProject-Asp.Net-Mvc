@@ -102,5 +102,7 @@ namespace TechnoBlogProject.Controllers
             _authorManager.UpdateAuthor(a);
             return RedirectToAction("AuthorList");
         }
+  
+       
     }
 }

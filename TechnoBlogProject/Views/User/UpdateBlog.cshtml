@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/AuthorLayout.cshtml";
 }
 
-<script src="~/Themes/ckeditor/ckEditor.js"></script>
+<script src="~/Themes/ckEditorText/ckeditor.js"></script>
 <div class="col-12 grid-margin stretch-card" style="flex: auto;">
     <div class="card">
         <div class="card-body">
@@ -49,16 +49,14 @@
                 <div ass="col-md-10">
 
 
-                    @Html.TextAreaFor(x => x.BlogContent, new { @id = "ckeditor", @class = "form-group", @rows = "200" })
+                    @Html.TextAreaFor(x => x.BlogContent, new { @id = "editor", @class = "form-group", @rows = "200" })
                     @Html.ValidationMessageFor(x => x.BlogContent)
                     <script>
-                        ClassicEditor
-                            .create(document.querySelector('#editor'), {
-                                plugins: [Bold, Italic, Underline, Strikethrough, Code, Subscript, Superscript],
-                                toolbar: {
-                                    items: ['bold', 'italic', 'underline', 'strikethrough', 'code', 'subscript', 'superscript']
-                                }
-                            })
+                     
+                            CKEDITOR.replace('editor')
+
+
+
                     </script>
 
                 </div>

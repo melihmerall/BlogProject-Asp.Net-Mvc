@@ -7,7 +7,7 @@
 }
 
 
-<script src="~/Themes/ckeditor/ckeditor.js"></script>
+<script src="~/Themes/ckEditorText/ckeditor.js"></script>
 <div class="col-12 grid-margin stretch-card" style="flex: auto;">
     <div class="card">
         <div class="card-body">
@@ -18,7 +18,7 @@
 
                 @Html.Label("Blog Title")
                 @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.BlogTitle)
+                @Html.ValidationMessageFor(x => x.BlogTitle, "", new { @class = "text-danger" })
                 <br />
                 @Html.Label("Blog Category")
                 @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
@@ -29,7 +29,7 @@
                 <br />
                 @Html.Label("Date")
                 @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control", @placeholder = "Sample Date: 00.00.0000" })
-                @Html.ValidationMessageFor(x => x.BlogDate)
+                @Html.ValidationMessageFor(x => x.BlogDate,"",new { @class = "text-danger" })
                 <br />
                 @Html.Label("Author")
                 @Html.DropDownListFor(x => x.AuthorId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
@@ -47,7 +47,7 @@
 
                 </div>
                 <script>
-                    CKEDITOR.replace('editor');
+                    CKEDITOR.replace('editor')
 
                 </script>
                 <br />

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<script src="/Themes/ckeditor/ckeditor.js"></script>
+<script src="/Themes/ckEditorText/ckeditor.js"></script>
 
 
 
@@ -13,11 +13,11 @@
 
     @Html.Label("Blog Title")
     @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.BlogTitle)
+    @Html.ValidationMessageFor(x => x.BlogTitle, "", new { @class = "text-danger" })
     <br />
     @Html.Label("Blog Category")
     @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.CategoryId)
+    @Html.ValidationMessageFor(x => x.CategoryId, "", new { @class = "text-danger" })
     <br />
     @*@Html.Label("Image")
         @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
@@ -27,7 +27,7 @@
     <br />
     @Html.Label("Date")
     @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.BlogDate)
+    @Html.ValidationMessageFor(x => x.BlogDate, "", new { @class = "text-danger" })
 
     <br />
 
@@ -42,10 +42,10 @@
 
 
         @Html.TextAreaFor(x => x.BlogContent, new { @id = "editor", @class = "form-control", @rows = "200" })
-        @Html.ValidationMessageFor(x => x.BlogContent)
+        @Html.ValidationMessageFor(x => x.BlogContent,"", new {@class="text-danger"})
 
         <script>
-            CKEDITOR.replace('editor');
+            CKEDITOR.replace('editor')
 
 
         </script>

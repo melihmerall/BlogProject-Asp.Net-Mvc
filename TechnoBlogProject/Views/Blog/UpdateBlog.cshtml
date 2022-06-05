@@ -3,30 +3,34 @@
     ViewBag.Title = "UpdateBlog";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-<script src="~/Themes/ckeditor/ckeditor.js"></script>
+<script src="~/Themes/ckEditorText/ckeditor.js"></script>
 <h2>UpdateBlog</h2>
 
-<form class="" method="post">
+<form class="" method="post" enctype="multipart/form-data">
     @Html.TextBoxFor(x => x.BlogRating, new { @class = "form-control", type = "hidden" })
     @Html.TextBoxFor(x => x.BlogId, new { @class = "form-control", type = "hidden" })
     @Html.Label("Blog Title")
     @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.BlogTitle)
+    @Html.ValidationMessageFor(x => x.BlogTitle, "", new { @class = "text-danger" })
     <br />
 
     @Html.TextBoxFor(x => x.BlogRating, new { @class = "form-control", type = "hidden" })
     <br />
     @Html.Label("Blog Category")
     @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.CategoryId)
+    @Html.ValidationMessageFor(x => x.CategoryId, "", new { @class = "text-danger" })
     <br />
-    @Html.Label("Image")
-    @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.BlogImage)
+    @*@Html.Label("Image")
+        @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.BlogImage)*@
+    @Html.Label("Image")<br />
+
+    <input type="file" name="BlogImage" value="" />
+    <br />
     <br />
     @Html.Label("Date")
     @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.BlogDate)
+    @Html.ValidationMessageFor(x => x.BlogDate, "", new { @class = "text-danger" })
     <br />
 
     @Html.TextBoxFor(x => x.BlogStatus, new { @class = "form-control", @type = "hidden" })
@@ -37,10 +41,16 @@
     @Html.Label("Content")
     <div ass="col-md-10">
 
-        @Html.ValidationMessageFor(model => model.BlogContent, "", new { @class = "text-danger" })
-        @Html.TextAreaFor(model => model.BlogContent, new { @id = "FullDescription", @class = "form-control", @rows = "200" })
+
+        @Html.TextAreaFor(x => x.BlogContent, new { @id = "editor", @class = "form-control", @rows = "200" })
+        @Html.ValidationMessageFor(x => x.BlogContent, "", new { @class = "text-danger" })
         <script>
-            CKEDITOR.replace("FullDescription");
+
+            CKEDITOR.replace('editor')
+
+
+
+
         </script>
 
     </div>
