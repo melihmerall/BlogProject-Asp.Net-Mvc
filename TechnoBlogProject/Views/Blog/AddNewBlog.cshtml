@@ -5,8 +5,11 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<script src="~/Themes/ckeditor/ckeditor.js"></script>
-<form class="" method="post">
+<script src="/Themes/ckeditor/ckeditor.js"></script>
+
+
+
+<form class="" method="post" enctype="multipart/form-data">
 
     @Html.Label("Blog Title")
     @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
@@ -16,9 +19,11 @@
     @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.CategoryId)
     <br />
-    @Html.Label("Image")
-    @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.BlogImage)
+    @*@Html.Label("Image")
+        @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.BlogImage)*@
+    <input type="file" name="BlogImage" value="" />
+    <br />
     <br />
     @Html.Label("Date")
     @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
@@ -33,17 +38,18 @@
 
     <br />
     @Html.Label("Content")
-<div ass="col-md-10">
+    <div ass="col-md-10">
 
-   
-    @Html.TextAreaFor(x => x.BlogContent, new { @id = "editor", @class = "form-control", @rows = "200" })
-    @Html.ValidationMessageFor(x => x.BlogContent)
-    <script>
-        CKEDITOR.replace('editor');
 
-    </script>
+        @Html.TextAreaFor(x => x.BlogContent, new { @id = "editor", @class = "form-control", @rows = "200" })
+        @Html.ValidationMessageFor(x => x.BlogContent)
 
-</div>
+        <script>
+            CKEDITOR.replace('editor');
+
+
+        </script>
+    </div>
 
     <br />
     <button class="btn btn-info">Save</button>

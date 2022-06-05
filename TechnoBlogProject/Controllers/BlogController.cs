@@ -305,6 +305,17 @@ namespace TechnoBlogProject.Controllers
             ValidationResult results = blogValidator.Validate(b);
             if(results.IsValid)
             {
+                if (Request.Files.Count >= 0)
+                {
+
+
+                    string fileName = Path.GetFileName(Request.Files[0].FileName);
+                    string extension = Path.GetExtension(Request.Files[0].FileName);
+                    string url = "~/Image/" + fileName + extension;
+                    Request.Files[0].SaveAs(Server.MapPath(url));
+                    b.BlogImage = "/Image/" + fileName + extension;
+
+                }
                 _blogManager.TAdd(b);
                 return RedirectToAction("AdminBlogList");
             }

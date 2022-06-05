@@ -9,7 +9,7 @@
             <div class="position-relative mb-3">
                 @foreach (var value in Model)
                 {
-                    <img class="img-fluid" src="@value.BlogImage" style="object-fit: cover;">
+                    
                     <div class="bg-white border border-top-0 p-4">
                         <div class="mb-3">
                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -17,10 +17,12 @@
                             <a class="text-body" >@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</a>
                         </div>
                         <h1 class="mb-3 text-uppercase ">@value.BlogTitle</h1>
-                        <div style="font-family:'Times New Roman', Times, serif !important; color:rgb(25, 16, 16) !important; ">
-                            <p >
+                        <div style="font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif !important; line-height: 32px !important; letter-spacing: -0.003em; font-size: 20px !important; font-style: normal !important; color: rgb(41, 41, 41, 1) !important; ">
+                            <p>
                                 @Html.Raw(value.BlogContent)
                             </p>
+                              
+                         
                         </div>
                         
                     </div>

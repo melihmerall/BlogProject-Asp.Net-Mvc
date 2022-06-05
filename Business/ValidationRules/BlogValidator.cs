@@ -21,10 +21,10 @@ namespace Business.ValidationRules
             RuleFor(x => x.BlogContent).MinimumLength(100).WithMessage("Enter up to 100 charactes");
 
             //Image
-            RuleFor(x => x.BlogImage).NotEmpty().WithMessage("Cannot Blank!!");
+            //RuleFor(x => x.BlogImage).NotEmpty().WithMessage("Cannot Blank!!");
 
-            //Date
-            RuleFor(x => x.BlogDate).NotEmpty().WithMessage("Cannot Blank!!");
+            ////Date
+            //RuleFor(x => x.BlogDate).NotEmpty().WithMessage("Cannot Blank!!");
 
 
         }

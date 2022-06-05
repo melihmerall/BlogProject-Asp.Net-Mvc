@@ -127,11 +127,52 @@ namespace TechnoBlogProject.Controllers
             return View();
         }
 
-        [HttpPost, ValidateInput(false)]
-        public ActionResult AddNewBlog(Blog blog)
+        [HttpPost]
+        public ActionResult AddNewBlog(Blog b)
         {
-            _blogManager.TAdd(blog);
-            return RedirectToAction("BlogList");
+            BlogContext blogContext = new BlogContext();
+            List<SelectListItem> values = (from x in blogContext.Categories.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.CategoryName,
+                                               Value = x.CategoryId.ToString()
+                                           }).ToList();
+            ViewBag.values = values;
+            List<SelectListItem> values2 = (from x in blogContext.Authors.ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = x.AuthorName,
+                                                Value = x.AuthorId.ToString()
+                                            }).ToList();
+            ViewBag.values2 = values2;
+            BlogValidator blogValidator = new BlogValidator();
+            ValidationResult results = blogValidator.Validate(b);
+            if (results.IsValid)
+            {
+                if (Request.Files.Count >= 0)
+                {
+
+
+                    string fileName = Path.GetFileName(Request.Files[0].FileName);
+                    string extension = Path.GetExtension(Request.Files[0].FileName);
+                    string url = "~/Image/" + fileName + extension;
+                    Request.Files[0].SaveAs(Server.MapPath(url));
+                    b.BlogImage = "/Image/" + fileName + extension;
+
+                }
+                _blogManager.TAdd(b);
+                return RedirectToAction("BlogList","User");
+            }
+
+            else
+            {
+                foreach (var value in results.Errors)
+                {
+                    ModelState.AddModelError(value.PropertyName, value.ErrorMessage);
+                }
+            }
+
+            return View();
         }
 
         public ActionResult StatusChangeToTrue(int id)

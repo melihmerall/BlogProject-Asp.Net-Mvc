@@ -3,9 +3,12 @@
 
 @model IEnumerable<Entity.Concrete.Blog>
 
+
+
+<div style="border-top: 3px #e8eaed solid;"></div>
 <div class="mb-3">
 
-    <div class=" mb-0">
+    <div class=" mb-0 mt-4">
         <div class="section-title">
             <h4 class="m-0 text-uppercase font-weight-bold">Author Other Posts</h4>
         </div>
@@ -13,21 +16,24 @@
     <div class="bg-white border border-top-0 p-3">
         @foreach (var value in Model)
         {
-
-            <div id="aut-ot-post" class="d-flex align-items-center bg-white mb-3 border border-2" style="height: 100px;">
-                <img style="width: 100px !important; height: auto !important; margin-left: 5px !important;" class="img-fluid" src="@value.BlogImage" alt="">
-                <div class="px-3 d-flex flex-column justify-content-center ">
-                    <div class="mb-0">
-                        @*<a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">@value.Category.CategoryName</a>*@
-                        @*<a class="text-body" href=""><small>@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</small></a>*@
+            if (value.BlogStatus == true)
+            {
+                <div id="aut-ot-post" class="d-flex align-items-center bg-white mb-3 border border-2" style="height: 100px;">
+                    <img style="width: 100px !important; height: auto !important; margin-left: 5px !important;" class="img-fluid" src="@value.BlogImage" alt="">
+                    <div class="px-3 d-flex flex-column justify-content-center ">
+                        <div class="mb-0">
+                            @*<a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">@value.Category.CategoryName</a>*@
+                            @*<a class="text-body" href=""><small>@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</small></a>*@
+                        </div>
+                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/Blog/BlogDetails/@value.BlogId">@value.BlogTitle</a>
                     </div>
-                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/Blog/BlogDetails/@value.BlogId">@value.BlogTitle</a>
                 </div>
-            </div>
-
-
+            }
 
 
         }
     </div>
-    </div>
+</div>
+
+
+

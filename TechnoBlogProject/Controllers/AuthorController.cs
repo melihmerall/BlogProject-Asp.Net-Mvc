@@ -33,7 +33,7 @@ namespace TechnoBlogProject.Controllers
             var blogAuthorId = _blogManager.GetList().Where(x => x.BlogId == id).Select(y => y.AuthorId)
                 .FirstOrDefault();
 
-            var authorBlogs = _blogManager.GetBlogByAuthorId(blogAuthorId).ToPagedList(pageValue, 14).OrderByDescending(c => c.BlogId);
+            var authorBlogs = _blogManager.GetBlogByAuthorId(blogAuthorId).ToPagedList(pageValue, 8).OrderByDescending(c => c.BlogId);
 
             return PartialView(authorBlogs);
         }
