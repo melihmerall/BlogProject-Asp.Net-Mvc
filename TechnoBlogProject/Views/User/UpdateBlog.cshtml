@@ -24,8 +24,8 @@
                 @Html.Label("Blog Category")
                 @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
                 <br />
-                @*@Html.Label("Image")
-        @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
+                @Html.Label("Image")<br />
+        @*@Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.BlogImage)*@
                 <input type="file" name="BlogImage" value="" />
                 <br />

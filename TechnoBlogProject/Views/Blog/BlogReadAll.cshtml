@@ -1,7 +1,14 @@
 ﻿@model IEnumerable<Entity.Concrete.Blog>
-<!-- News With Sidebar Start -->
 
+<meta name="title" content="@ViewBag.blogTitle">
+<meta name="description" content="Software paradise with up-to-date software content. You can find what you are looking for about the software here.">
+<meta name="keywords" content="software, .net, web development, cyber security , data structures, big data, data illustration, database management,  digital marketing, seo, java, html,css,c#">
+<meta name="robots" content="index, follow">
+<meta name="language" content="English">
+<meta name="author" content="@ViewBag.authorName" />
+<title>@ViewBag.blogTitle</title>
 <div class="container-fluid">
+    
     <div class="container">
         <div class="row">
 
@@ -31,9 +38,9 @@
                             <img class="rounded-circle mr-2" src="@value.Author.AuthorImage" width="25" height="25" alt="">
                             <span>Auhthor By - @value.Author.AuthorName </span>
 
-                           
+
                         </div>
-              
+
                     </div>
                 }
                 <!-- News Detail End -->

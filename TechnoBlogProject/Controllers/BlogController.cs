@@ -231,6 +231,13 @@ namespace TechnoBlogProject.Controllers
         public PartialViewResult BlogReadAll(int id)
         {
 
+
+            // for seo
+            var blogTitle = _blogManager.GetBlogByIdList(id).Where(x => x.BlogId == id).Select(y => y.BlogTitle).FirstOrDefault();
+            
+
+
+            // For author profile
             var authorName = _blogManager.GetBlogByIdList(id).Where(x => x.BlogId == id).Select(y => y.Author.AuthorName).FirstOrDefault();
             var authorTitle = _blogManager.GetBlogByIdList(id).Where(x => x.BlogId == id).Select(y => y.Author.AuthorTitle).FirstOrDefault();
             var authorMail = _blogManager.GetBlogByIdList(id).Where(x => x.BlogId == id).Select(y => y.Author.AuthorMail).FirstOrDefault();
@@ -246,7 +253,10 @@ namespace TechnoBlogProject.Controllers
             ViewBag.authorLinkedin = authorLinkedin;
             ViewBag.authorImage = authorImage;
 
-            ViewBag.authorName = authorName;
+
+            ViewBag.blogTitle = blogTitle;
+        
+
             var blogDetailsList = _blogManager.GetBlogByIdList(id);
             return PartialView(blogDetailsList);
 
@@ -258,7 +268,7 @@ namespace TechnoBlogProject.Controllers
 
             int pageNum = 1;
 
-
+            var blogCategory = _blogManager.GetBlogByCategoryId(id).Where(x => x.BlogId == id).Select(y => y.Category.CategoryName).FirstOrDefault();
             var blogListByCategory = _blogManager.GetBlogByCategoryId(id).ToPagedList(pageNum, 30);
 
 
@@ -270,6 +280,8 @@ namespace TechnoBlogProject.Controllers
             var CategoryDesc = _blogManager.GetBlogByCategoryId(id).Select(y => y.Category.CategoryDescription)
                 .FirstOrDefault();
             ViewBag.CategoryDesc = CategoryDesc;
+            ViewBag.blogCategory = blogCategory;
+
             return View(blogListByCategory);
         }
 
@@ -398,6 +410,8 @@ namespace TechnoBlogProject.Controllers
                                                 Value = x.AuthorId.ToString()
                                             }).ToList();
             ViewBag.values2 = values2;
+
+
             BlogValidator blogValidator = new BlogValidator();
             ValidationResult results = blogValidator.Validate(b);
             if (results.IsValid)
@@ -448,7 +462,7 @@ namespace TechnoBlogProject.Controllers
             return RedirectToAction("AdminBlogList");
         }
 
-        // Tagları çekiyorum.
+        // get tags.
 
 
         public ActionResult AuthorBlogList(int id)
