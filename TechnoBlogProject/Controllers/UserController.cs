@@ -13,15 +13,16 @@ using FluentValidation.Results;
 
 namespace TechnoBlogProject.Controllers
 {
-    
+
     public class UserController : Controller
     {
-        
+
         // GET: AuthorLogin
         UserProfileManager profileManager = new UserProfileManager();
         BlogManager _blogManager = new BlogManager();
+        AuthorManager authorManager = new AuthorManager();  
 
-        [Route("author")]
+        [Route("editprofil")]
         public ActionResult Index()
         {
             return View();
@@ -29,18 +30,18 @@ namespace TechnoBlogProject.Controllers
 
         public PartialViewResult UserActivity(string mail)
         {
-           
+
             mail = (string)Session["AuthorMail"];
             var profileValues = profileManager.GetBlogByAuthorMail(mail);
             return PartialView(profileValues);
         }
-
+        [Route("updateuserprofile")]
         public ActionResult UpdateUserProfile(Author author)
         {
             profileManager.UpdateAuthor(author);
             return RedirectToAction("Index");
         }
-
+        [Route("bloglist")]
         public ActionResult BlogList(string p)
         {
             p = (string)Session["AuthorMail"];
@@ -71,7 +72,7 @@ namespace TechnoBlogProject.Controllers
             return View(blog);
         }
 
-        [HttpPost, ValidateInput(false)]
+        [HttpPost]
         public ActionResult UpdateBlog(Blog b)
         {
             BlogContext blogContext = new BlogContext();
@@ -96,7 +97,6 @@ namespace TechnoBlogProject.Controllers
                 if (Request.Files.Count >= 0)
                 {
 
-
                     string fileName = Path.GetFileName(Request.Files[0].FileName);
                     string extension = Path.GetExtension(Request.Files[0].FileName);
                     string url = "~/Image/" + fileName + extension;
@@ -118,6 +118,7 @@ namespace TechnoBlogProject.Controllers
             return View();
         }
         [HttpGet]
+        [Route("addnewblog")]
         public ActionResult AddNewBlog()
         {
             // Dropdown list. Solid hale gelecek.
@@ -140,6 +141,7 @@ namespace TechnoBlogProject.Controllers
         }
 
         [HttpPost]
+        [Route("addnewblog")]
         public ActionResult AddNewBlog(Blog b)
         {
             BlogContext blogContext = new BlogContext();
@@ -187,25 +189,18 @@ namespace TechnoBlogProject.Controllers
             return View();
         }
 
-        public ActionResult StatusChangeToTrue(int id)
-        {
-            _blogManager.CommentStatusChangeToTrue(id);
-            return RedirectToAction("BlogList","User");
-        }
-        public ActionResult StatusChangeToFalse(int id)
-        {
-            _blogManager.CommentStatusChangeToFalse(id);
-            return RedirectToAction("BlogList","User");
-        }
+     
 
 
         // LogOut from author manager page.
+        [Route("LogOut")]
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
             Session.Abandon();
             return RedirectToAction("AuthorLogin", "Login");
         }
+        [Route("userprofile")]
         public ActionResult UserProfile(string p)
         {
             p = (string)Session["AuthorMail"];

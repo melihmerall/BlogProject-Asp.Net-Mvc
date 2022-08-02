@@ -40,14 +40,30 @@
                         <p>
                             @value.CommentText
                         </p>
-
+                        
                     </div>
+                    
                 </div>
 
             </div>
+            <script>
+                function arttir() {
 
+                    var sonuc = document.getElementById("CommentLike");
+                    sonuc.value=Number(sonuc.value)+1;
+                    sonuc = @value.ReplyCommentId;
+                }
+
+
+            </script>
 
         }
     }
+
+    <script>
+
+
+
+    </script>
 </div>
 @Html.Action("ReplyComment", "Comment")

@@ -37,18 +37,20 @@ namespace TechnoBlogProject.Controllers
 
             return PartialView(authorBlogs);
         }
-
+        [Route("authorList")]
         public ActionResult AuthorList()
         {
             var authorList = _authorManager.GetAll();
             return View(authorList);
         }
         [HttpGet]
+        [Route("addauthor")]
         public ActionResult AddAuthor()
         {
             return View();
         }
         [HttpPost]
+        [Route("addauthor")]
         public ActionResult AddAuthor(Author a)
         {
             AuthorValidator authorValidator = new AuthorValidator();
@@ -89,20 +91,23 @@ namespace TechnoBlogProject.Controllers
         [HttpPost]
         public ActionResult AuthorEdit(Author a)
         {
-            if (Request.Files.Count >= 0)
-            {
-                string fileName = Path.GetFileName(Request.Files[0].FileName);
-                string extension = Path.GetExtension(Request.Files[0].FileName);
-                string url = "~/Image/" + fileName + extension;
-                Request.Files[0].SaveAs(Server.MapPath(url));
-                a.AuthorImage = "/Image/" + fileName + extension;
 
-            }
 
             _authorManager.UpdateAuthor(a);
             return RedirectToAction("AuthorList");
         }
-  
-       
+        public ActionResult StatusChangeToTrue(int id)
+        {
+            _authorManager.AuthorStatusChangeToTrue(id);
+            return RedirectToAction("AuthorList");
+        }
+        public ActionResult StatusChangeToFalse(int id)
+        {
+            _authorManager.AuthorStatusChangeToFalse(id);
+            return RedirectToAction("AuthorList");
+        }
+
+
+
     }
 }

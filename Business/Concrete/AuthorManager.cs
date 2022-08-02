@@ -37,5 +37,19 @@ namespace Business.Concrete
         {
             repoAuthor.Update(author);
         }
+        public void AuthorStatusChangeToFalse(int id)
+        {
+            Author author = repoAuthor.Find(x => x.AuthorId == id);
+            author.AuthorStatus = false;
+            repoAuthor.Update(author);
+        }
+        public void AuthorStatusChangeToTrue(int id)
+        {
+            Author author = repoAuthor.Find(x => x.AuthorId == id);
+            author.AuthorStatus = true;
+            repoAuthor.Update(author);
+
+
+        }
     }
 }

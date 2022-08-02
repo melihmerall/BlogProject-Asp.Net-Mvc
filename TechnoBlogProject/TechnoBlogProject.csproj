@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -246,15 +246,40 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MailSubscribeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\SeoUrl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\AdminRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Themes\AdminLTE-3.0.4\.gitignore" />
     <Content Include="Themes\AdminLTE-3.0.4\build\config\postcss.config.js" />
     <Content Include="Themes\AdminLTE-3.0.4\build\config\rollup.config.js" />
@@ -2516,13 +2541,8 @@
     <Content Include="Themes\AdminThema\style.css" />
     <Content Include="Themes\AdminThema\tables.html" />
     <Content Include="Themes\AdminThema\widgets.html" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Themes\AdminLTE-3.0.4\.babelrc" />
     <Content Include="Themes\AdminLTE-3.0.4\.browserslistrc" />
@@ -2779,10 +2799,6 @@
     <Content Include="Themes\AdminLTE-3.0.4\plugins\sweetalert2-theme-bootstrap-4\bootstrap-4.scss" />
     <Content Include="Themes\AdminLTE-3.0.4\plugins\toastr\toastr.js.map" />
     <Content Include="Themes\AdminLTE-3.0.4\README.md" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Themes\AdminThema\.DS_Store" />
     <Content Include="Themes\AdminThema\css\bootstrap-grid.css.map" />
     <Content Include="Themes\AdminThema\css\bootstrap-grid.min.css.map" />
@@ -2924,10 +2940,61 @@
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
     </None>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Themes\author-colorlib-master\css\ajax-loader.gif" />
+    <Content Include="Themes\author-colorlib-master\css\animate.css" />
+    <Content Include="Themes\author-colorlib-master\css\bootstrap.min.css" />
+    <Content Include="Themes\author-colorlib-master\css\bootstrap\mixins\_visibility.css" />
+    <Content Include="Themes\author-colorlib-master\css\css\bootstrap-reboot.css" />
+    <Content Include="Themes\author-colorlib-master\css\css\mixins\_text-hide.css" />
+    <Content Include="Themes\author-colorlib-master\css\flaticon.css" />
+    <Content Include="Themes\author-colorlib-master\css\magnific-popup.css" />
+    <Content Include="Themes\author-colorlib-master\css\owl.carousel.min.css" />
+    <Content Include="Themes\author-colorlib-master\css\owl.theme.default.min.css" />
+    <Content Include="Themes\author-colorlib-master\css\style.css" />
+    <Content Include="Themes\author-colorlib-master\fonts\flaticon\backup.txt" />
+    <Content Include="Themes\author-colorlib-master\fonts\flaticon\font\flaticon.css" />
+    <Content Include="Themes\author-colorlib-master\fonts\flaticon\font\flaticon.html" />
+    <Content Include="Themes\author-colorlib-master\fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="Themes\author-colorlib-master\images\about.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\bg_1.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\bg_4.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\book-1.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\book-2.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\book-3.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\book-4.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\book-5.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\book-6.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\book-7.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\book-8.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\book-9.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\loc.png" />
+    <Content Include="Themes\author-colorlib-master\images\partner-1.png" />
+    <Content Include="Themes\author-colorlib-master\images\partner-2.png" />
+    <Content Include="Themes\author-colorlib-master\images\partner-3.png" />
+    <Content Include="Themes\author-colorlib-master\images\partner-4.png" />
+    <Content Include="Themes\author-colorlib-master\images\partner-5.png" />
+    <Content Include="Themes\author-colorlib-master\images\person_1.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\person_2.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\person_3.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\person_4.jpg" />
+    <Content Include="Themes\author-colorlib-master\images\undraw_book_lover_mkck.svg" />
+    <Content Include="Themes\author-colorlib-master\index.html" />
+    <Content Include="Themes\author-colorlib-master\js\bootstrap.min.js" />
+    <Content Include="Themes\author-colorlib-master\js\google-map.js" />
+    <Content Include="Themes\author-colorlib-master\js\jquery-3.2.1.min.js" />
+    <Content Include="Themes\author-colorlib-master\js\jquery-migrate-3.0.1.min.js" />
+    <Content Include="Themes\author-colorlib-master\js\jquery.animateNumber.min.js" />
+    <Content Include="Themes\author-colorlib-master\js\jquery.easing.1.3.js" />
+    <Content Include="Themes\author-colorlib-master\js\jquery.magnific-popup.min.js" />
+    <Content Include="Themes\author-colorlib-master\js\jquery.min.js" />
+    <Content Include="Themes\author-colorlib-master\js\jquery.stellar.min.js" />
+    <Content Include="Themes\author-colorlib-master\js\jquery.waypoints.min.js" />
+    <Content Include="Themes\author-colorlib-master\js\main.js" />
+    <Content Include="Themes\author-colorlib-master\js\owl.carousel.min.js" />
+    <Content Include="Themes\author-colorlib-master\js\popper.min.js" />
+    <Content Include="Themes\author-colorlib-master\js\scrollax.min.js" />
+    <Content Include="Themes\author-colorlib-master\main.html" />
+    <Content Include="Themes\author-colorlib-master\readme.txt" />
     <Content Include="Themes\BlogFrontEnd\.gitattributes" />
     <Content Include="Themes\BlogFrontEnd\css\style.css" />
     <Content Include="Themes\BlogFrontEnd\css\style.min.css" />
@@ -3390,7 +3457,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
@@ -3569,6 +3635,117 @@
     <Content Include="Themes\ckEditorText\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Themes\ckEditorText\SECURITY.md" />
     <Content Include="Themes\ckEditorText\skins\moono-lisa\readme.md" />
+    <Content Include="Views\User\UpdateUserProfile.cshtml" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Themes\author-colorlib-master\.DS_Store" />
+    <Content Include="Themes\author-colorlib-master\css\.DS_Store" />
+    <Content Include="Themes\author-colorlib-master\css\bootstrap\.DS_Store" />
+    <Content Include="Themes\author-colorlib-master\css\bootstrap\mixins\.DS_Store" />
+    <Content Include="Themes\author-colorlib-master\css\css\.DS_Store" />
+    <Content Include="Themes\author-colorlib-master\fonts\.DS_Store" />
+    <Content Include="Themes\author-colorlib-master\fonts\flaticon\.DS_Store" />
+    <Content Include="Themes\author-colorlib-master\fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="Themes\author-colorlib-master\fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="Themes\author-colorlib-master\fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="Themes\author-colorlib-master\fonts\flaticon\font\Flaticon.woff2" />
+    <Content Include="Themes\author-colorlib-master\fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="Themes\author-colorlib-master\fonts\flaticon\license\license.pdf" />
+    <Content Include="Themes\author-colorlib-master\images\.DS_Store" />
+    <Content Include="Themes\author-colorlib-master\js\.DS_Store" />
+    <Content Include="Themes\author-colorlib-master\prepros-6.config" />
+    <Content Include="Themes\author-colorlib-master\scss\.DS_Store" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\.DS_Store" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\bootstrap-grid.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\bootstrap.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_alert.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_badge.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_caret.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_deprecate.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_float.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_forms.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_grid.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_hover.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_image.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_lists.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_resize.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_screen-reader.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_size.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_table-row.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_text-hide.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_transition.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\mixins\_visibility.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_align.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_background.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_borders.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_clearfix.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_display.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_embed.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_flex.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_float.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_overflow.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_position.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_screenreaders.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_shadows.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_sizing.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_spacing.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_stretched-link.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_text.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\utilities\_visibility.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\vendor\_rfs.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_alert.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_badge.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_breadcrumb.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_button-group.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_buttons.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_card.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_carousel.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_close.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_code.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_custom-forms.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_dropdown.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_forms.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_functions.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_grid.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_images.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_input-group.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_jumbotron.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_list-group.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_media.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_mixins.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_modal.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_nav.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_navbar.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_pagination.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_popover.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_print.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_progress.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_reboot.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_root.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_spinners.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_tables.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_toasts.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_tooltip.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_transitions.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_type.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_utilities.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\bootstrap\_variables.scss" />
+    <Content Include="Themes\author-colorlib-master\scss\style.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3643,14 +3820,14 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.AspNetCore.Components.Analyzers.3.1.10\build\netstandard2.0\Microsoft.AspNetCore.Components.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.AspNetCore.Components.Analyzers.3.1.10\build\netstandard2.0\Microsoft.AspNetCore.Components.Analyzers.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
-  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.targets')" />
   <Import Project="..\packages\Microsoft.AspNetCore.Components.Analyzers.3.1.10\build\netstandard2.0\Microsoft.AspNetCore.Components.Analyzers.targets" Condition="Exists('..\packages\Microsoft.AspNetCore.Components.Analyzers.3.1.10\build\netstandard2.0\Microsoft.AspNetCore.Components.Analyzers.targets')" />
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.4.6.4\build\Microsoft.TypeScript.MSBuild.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,5 +1,5 @@
 ﻿@model  IEnumerable<Entity.Concrete.Blog>
-
+@using TechnoBlogProject.Helper;
 
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,22 +11,23 @@
             <h4 class="m-0 text-uppercase font-weight-bold">Featured Posts</h4>
         </div>
         <div class="owl-carousel news-carousel carousel-item-4 position-relative">
-            @foreach(var value in Model)
+            @foreach (var value in Model)
             {
-                if(value.BlogStatus == true) { 
+                if (value.BlogStatus == true)
+                {
 
 
-            <div class="position-relative overflow-hidden" style="height: 300px;">
-                <img class="img-fluid h-100" src="@value.BlogImage" style="object-fit: cover;">
-                <div class="overlay">
-                    <div class="mb-2">
-                        <a style="float:left;" class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                           href="/Blog/BlogByCategory/@value.BlogId">@value.Category.CategoryName</a>
-                        <a class="text-white" style="float:left;" href=""><small>@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</small></a>
+                    <div class="position-relative overflow-hidden">
+                        <img class=" img-fluid" src="@value.BlogImage" style="object-fit: cover; width:100% !important; height:250px !important; ">
+                        <div class="overlay">
+                            <div class="mb-2">
+                                <a style="float:left;" class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                   href="/@value.Category.CategoryName.ToSeoUrl()/@value.Category.CategoryId">@value.Category.CategoryName</a>
+                                <a class="text-white" style="float:left;"><small>@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</small></a>
+                            </div>
+                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/article/@value.BlogUrl/@value.BlogId">@value.BlogTitle</a>
+                        </div>
                     </div>
-                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/Blog/BlogDetails/@value.BlogId">@value.BlogTitle</a>
-                </div>
-            </div>
                 }
             }
         </div>

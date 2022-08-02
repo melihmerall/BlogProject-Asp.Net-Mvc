@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<Entity.Concrete.Blog>
-
+@using TechnoBlogProject.Helper;
 <meta name="title" content="@ViewBag.blogTitle">
 <meta name="description" content="Software paradise with up-to-date software content. You can find what you are looking for about the software here.">
 <meta name="keywords" content="software, .net, web development, cyber security , data structures, big data, data illustration, database management,  digital marketing, seo, java, html,css,c#">
@@ -8,7 +8,7 @@
 <meta name="author" content="@ViewBag.authorName" />
 <title>@ViewBag.blogTitle</title>
 <div class="container-fluid">
-    
+
     <div class="container">
         <div class="row">
 
@@ -20,14 +20,14 @@
                     <div class="bg-white border border-top-0 p-4">
                         <div class="mb-3">
                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                               href="/Blog/BlogByCategory/@value.CategoryId">@value.Category.CategoryName</a>
+                               href="/@value.Category.CategoryName.ToSeoUrl()/@value.CategoryId">@value.Category.CategoryName</a>
                             <a class="text-body">@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</a>
                         </div>
                         <h1 class="mb-3 text-uppercase ">@value.BlogTitle</h1>
                         <div style="font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif !important; line-height: 32px !important; letter-spacing: -0.003em; font-size: 20px !important; font-style: normal !important; color: rgb(41, 41, 41, 1) !important; ">
-                            <p>
+                            
                                 @Html.Raw(value.BlogContent)
-                            </p>
+                            
 
 
                         </div>
@@ -56,32 +56,15 @@
     </div>
 </div>
 
-<div class="col-8">
-    <div class="d-flex justify-content-between bg-white  border border-bottom-4 p-3 " style="height:310px !important;">
-        <div class="section-title d-flex align-items-center">
-            <div class="full dis_flex center_text" style="margin-bottom:100px !important;">
-                <div class="profile_img">
-                    <img width="180" style="float:left; margin-top:120px !important; height:200px !important" class="rounded-circle" src="@ViewBag.authorImage" alt="#" />
-                </div>
-                <div class="contact_inner" style="margin-left:20% !important; margin-top:140px !important; margin-left:250px !important;">
-
-                    <h3>@ViewBag.authorName</h3>
-                    <p>
-                        <strong>About: </strong> @ViewBag.authorTitle <br />
-
-                        <strong>Author Mail:</strong> @ViewBag.authorMail
-                    </p>
-
-                    <div class="d-flex align-items-center">
-                        <a class="nav-link text-red fab fa-twitter" target="_blank" href="@ViewBag.authorTwitter"></a>
-                        <a class="nav-link text-red fab fa-instagram" target="_blank" href="@ViewBag.authorInstagram"></a>
-                        <a class="nav-link text-bold fab fa-linkedin" target="_blank" href="@ViewBag.authorLinkedin"></a>
-
-                    </div>
-                </div>
+<div class="col-lg-8">
 
 
-            </div>
-        </div>
-    </div>
+    @Html.Action("CommentList", "Comment")
+
 </div>
+
+<div class="col-4">
+    @Html.Action("AuthorPopularPost", "Author")
+</div>
+
+

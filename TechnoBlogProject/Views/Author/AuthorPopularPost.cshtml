@@ -5,7 +5,7 @@
 
 
 
-<div style="border-top: 3px #e8eaed solid;"></div>
+<div style="border-top: 1px #e8eaed solid;"></div>
 <div class="mb-3">
 
     <div class=" mb-0 mt-4">
@@ -25,7 +25,7 @@
                             @*<a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">@value.Category.CategoryName</a>*@
                             @*<a class="text-body" href=""><small>@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</small></a>*@
                         </div>
-                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/Blog/BlogDetails/@value.BlogId">@value.BlogTitle</a>
+                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/article/@value.BlogUrl/@value.BlogId">@value.BlogTitle</a>
                     </div>
                 </div>
             }

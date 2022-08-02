@@ -1,6 +1,6 @@
 ﻿@using PagedList
 @using PagedList.Mvc
-
+@using TechnoBlogProject.Helper;
 @model IEnumerable<Entity.Concrete.Blog>
 @{
     ViewBag.Title = "BlogByCategory";
@@ -14,6 +14,9 @@
 <meta name="author" content="@ViewBag.authorName" />
 <title>@ViewBag.blogCategory</title>
 
+
+<!-- News With Sidebar Start -->
+<!-- News With Sidebar End -->
 <div class="container-fluid">
     <div class="container" style="margin-top:3rem;">
         <div class="row">
@@ -21,36 +24,59 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section-title">
-                            <h4 class="m-0 text-uppercase font-weight-bold">@ViewBag.CategoryName</h4>
+                            <h4 class="m-0 text-uppercase font-weight-bold">CATEGORY: @ViewBag.categoryName</h4>
+
 
                         </div>
                     </div>
                     @foreach (var value in Model)
                     {
-                        if (value.BlogStatus == true)
+
+                        if (value.BlogStatus == true )
                         {
 
                             <div class="col-lg-6">
-                                <div class="d-flex align-items-center bg-white mb-3" style="height: 130px;">
-                                    <a href="/Blog/BlogDetails/@value.BlogId"><img style="width:160px; height:100px;" class="img-fluid" src="@value.BlogImage" alt=""></a>
-                                    <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                        <div class="mb-2">
-                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">@value.Category.CategoryName</a>
-                                            <a style="float:left;" class="text-body" href=""><small>@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</small></a>
-                                        </div>
-                                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/Blog/BlogDetails/@value.BlogId">@value.BlogTitle</a>
-                                    </div>
-                                </div>
-                            </div>
+                                <div class="position-relative mb-3">
+                                    <a href="/article/@value.BlogUrl/@value.BlogId"> <img class=" img-fluid" src="@value.BlogImage" style="object-fit: cover; width:100% !important; height:250px !important; "></a>
 
+                                    <div class="bg-white border border-top-0 p-3" style="min-height:150px; max-height:auto;">
+                                        <div class="mb-2">
+                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-1"
+                                               href="/@value.Category.CategoryName.ToSeoUrl()/@value.Category.CategoryId">@value.Category.CategoryName</a>
+                                            <a class="text-body" href=""><small>@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</small></a>
+                                        </div>
+                                        <a class="h5 d-block mt-4 text-secondary text-uppercase font-weight-bold" href="/article/@value.BlogUrl/@value.BlogId">@value.BlogTitle</a>
+
+                                    </div>
+                                    <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                                        <div class="d-flex align-items-center">
+                                            <img class="rounded-circle mr-2" src="@value.Author.AuthorImage" width="25" height="25" alt="">
+                                            <small>@value.Author.AuthorName - Blog Rating: %@value.BlogRating</small>
+                                        </div>
+                                        @*<div class="d-flex align-items-center">
+                                <small class="ml-3"><i  class="far fa-eye mr-2"></i></small>
+                                <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
+                            </div>*@
+
+                                    </div>
+
+                                </div>
+
+                            </div>
                         }
+                     
+
                     }
 
 
+                    <div class="col-lg-4">
+                    </div>
                 </div>
             </div>
+
             <div class="col-lg-4">
                 @Html.Action("PopularPost", "Blog")
+
                 <div class="mb-3">
                     <div class="section-title mb-0">
                         <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
@@ -72,12 +98,38 @@
                         </a>
 
                     </div>
-                    <div>
-                    </div>
                 </div>
+
+                @*<div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
+                        </div>
+                        <div class="bg-white text-center border border-top-0 p-3">
+                            <a href=""><img class="img-fluid" src="img/news-800x500-2.jpg" alt=""></a>
+                        </div>
+                    </div>*@
+
+
+
+                @*<div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
+                        </div>
+                        <div class="bg-white text-center border border-top-0 p-3">
+                            <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
+                            <div class="input-group mb-2" style="width: 100%;">
+                                <input type="text" class="form-control form-control-lg" placeholder="Your Email">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
+                                </div>
+                            </div>
+                            <small>Lorem ipsum dolor sit amet elit</small>
+                        </div>
+                    </div>*@
+
+                @Html.Action("MainTagList", "Tag")
+                <!-- Tags End -->
             </div>
-
-
         </div>
     </div>
 </div>

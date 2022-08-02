@@ -90,7 +90,7 @@
                                 <td style="width:2%;" class="project-actions text-left">
                                     @if (@value.BlogStatus == true)
                                     {
-                                        <a class="btn btn-primary btn-sm" target="_blank" href="/Blog/BlogDetails/@value.BlogId">
+                                        <a class="btn btn-primary btn-sm" target="_blank" href="/article/@value.BlogUrl/@value.BlogId">
 
                                             <i class="fas fa-folder">
 
@@ -151,7 +151,7 @@
 
             </div>
             <br />
-            <a href="/User/AddNewBlog/" class="btn btn-success">Create New Blog</a>
+            <a href="/AddNewBlog/" class="btn btn-success">Create New Blog</a>
         </div>
     </div>
 </div>

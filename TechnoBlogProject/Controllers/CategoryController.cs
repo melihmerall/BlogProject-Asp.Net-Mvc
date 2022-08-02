@@ -25,7 +25,7 @@ namespace TechnoBlogProject.Controllers
             var categoryValues = _categoryManager.GetList();
             return PartialView(categoryValues);
         }
-
+        [Route("adminCategoryList")]
         public ActionResult AdminCategoryList()
         {
             var categoryList = _categoryManager.GetList();
@@ -44,11 +44,13 @@ namespace TechnoBlogProject.Controllers
 
 
         [HttpGet]
+        [Route("AddNewCategory")]
         public ActionResult AddCategory()
         {
             return View();
         }
         [HttpPost, ValidateInput(false)]
+        [Route("AddNewCategory")]
         public ActionResult AddCategory(Category c)
         {
             CategoryValidator categoryValidator = new CategoryValidator();
@@ -69,6 +71,7 @@ namespace TechnoBlogProject.Controllers
         }
 
         [HttpGet]
+
         public ActionResult CategoryEdit(int id)
         {
             Category category = _categoryManager.GetById(id);

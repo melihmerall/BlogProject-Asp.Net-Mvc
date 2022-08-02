@@ -38,9 +38,9 @@ namespace TechnoBlogProject.Controllers
             c.CommentDate = DateTime.Now;
 
             commentManager.CommentAdd(c);
-            return RedirectToAction("BlogDetails/" + c.BlogId, "Blog", new { area = "" });
+            return RedirectToAction("BlogDetails/" + c.BlogId, "article", new { area = "" });
         }
-
+        [Route("adminCommentListTrue")]
         public ActionResult AdminCommentListTrue(int pageValue = 1)
         {
           
@@ -55,6 +55,7 @@ namespace TechnoBlogProject.Controllers
             commentManager.CommentStatusChangeToFalse(id);
             return RedirectToAction("AdminCommentListTrue");
         }
+        [Route("adminCommentListFalse")]
         public ActionResult AdminCommentListFalse()
         {
             var commentList = commentManager.CommentByStatusFalse();
@@ -66,5 +67,6 @@ namespace TechnoBlogProject.Controllers
             commentManager.CommentStatusChangeToTrue(id);
             return RedirectToAction("AdminCommentListFalse");
         }
+
     }
 }

@@ -29,7 +29,11 @@
                 <br />
                 @Html.Label("Date")
                 @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control", @placeholder = "Sample Date: 00.00.0000" })
-                @Html.ValidationMessageFor(x => x.BlogDate,"",new { @class = "text-danger" })
+                @Html.ValidationMessageFor(x => x.BlogDate, "", new { @class = "text-danger" })
+                <br />
+                @Html.Label("Blog Url For Seo")
+                @Html.TextBoxFor(x => x.BlogUrl, new { @class = "form-control", @placeholder = "Example: what-is-the-software" })
+                @Html.ValidationMessageFor(x => x.BlogUrl, "", new { @class = "text-danger" })
                 <br />
                 @Html.Label("Author")
                 @Html.DropDownListFor(x => x.AuthorId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })

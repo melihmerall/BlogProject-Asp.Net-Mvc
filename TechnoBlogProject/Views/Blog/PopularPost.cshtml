@@ -1,10 +1,10 @@
-﻿
+﻿@using TechnoBlogProject.Helper;
 @model  IEnumerable<Entity.Concrete.Blog>
 
 @{
     Layout = null;
 }
-@{ 
+@{
 
     int puan = 1;
 }
@@ -21,13 +21,13 @@
 
             <div class="bg-white border border-top-0 p-3">
                 <div class="d-flex align-items-center bg-white mb-3" style="height: auto;">
-                    <a href="/Blog/BlogDetails/@value.BlogId"><img class="img-fluid " style="width:130px; height:100px;" src="@value.BlogImage" alt=""></a>
+                    <a href="/article/@value.BlogUrl/@value.BlogId"><img class="img-fluid " style="width:130px; height:100px;" src="@value.BlogImage" alt=""></a>
                     <div class=" px-2 d-flex flex-column justify-content-center border border-left-0">
                         <div class="mb-0">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/Blog/BlogByCategory/@value.CategoryId">@value.Category.CategoryName</a>
-                            <a style="float:left;" class="text-body" href="/Blog/BlogDetails/@value.BlogId"><small>@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</small></a>
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/@value.Category.CategoryName.ToSeoUrl()/@value.CategoryId">@value.Category.CategoryName</a>
+                            <a style="float:left;" class="text-body"><small>@(((DateTime)value.BlogDate).ToString("yyyy MMMM dd"))</small></a>
                         </div>
-                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/Blog/BlogDetails/@value.BlogId">@value.BlogTitle </a>
+                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="/article/@value.BlogUrl/@value.BlogId">@value.BlogTitle </a>
                     </div>
                 </div>
 

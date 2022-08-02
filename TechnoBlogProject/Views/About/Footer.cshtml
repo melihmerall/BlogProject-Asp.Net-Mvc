@@ -1,4 +1,4 @@
-﻿
+﻿@using TechnoBlogProject.Helper;
 @model IEnumerable<Entity.Concrete.Category>
 
 <div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
@@ -14,25 +14,25 @@
 
             </div>
             <br />
-            <a  target="_blank" class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/Login/AuthorLogin/">Author Login </a>
+            <a target="_blank" class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="/Login/AuthorLogin/">Author Login </a>
             <br />
 
             <br />
             <a target="_top" class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2 mb-3" href="/Contact/SendMessage/">Contact </a>
         </div>
-        
-        <div class="col-lg-3 col-md-6 mb-6 "style="margin-right:35px !important;">
-         
+
+        <div class="col-lg-3 col-md-6 mb-6 " style="margin-right:35px !important;">
+
 
             <h5 class="mb-4 text-white text-uppercase font-weight-bold">About Us</h5>
             <div class="mb-3">
                 <div class="mb-2">
 
- 
+
                 </div>
                 <a class="small text-body text-uppercase font-weight-medium">WE ARE WRITERS WHO LOVE TO DO RESEARCH AND PUT OUR WORK IN WRITING. WE AIM TO CONVEY INFORMATION TO PEOPLE IN THE INTERNET WORLD WITH OUR EVER-GROWING OF WRITERS. YOU CAN JOIN US...</a>
             </div>
-            
+
         </div>
         <div class="col-lg-5 col-md-6 mb-6">
             <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
@@ -43,7 +43,7 @@
                     if (value.CategoryStatus == true)
                     {
                         <div class="m-n1">
-                            <a style="float:left;" href="/Blog/BlogByCategory/@value.CategoryId" class="btn btn-sm btn-secondary m-1">@value.CategoryName</a>
+                            <a style="float:left;" href="/@value.CategoryName.ToSeoUrl()/@value.CategoryId" class="btn btn-sm btn-secondary m-1">@value.CategoryName</a>
 
 
                         </div>
@@ -54,14 +54,14 @@
 
             </div>
         </div>
-        
+
     </div>
 </div>
 <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
     <p class="m-0 text-center">
-        &copy; <a style="color: #37b69b !important;" href="#">Software Paradise</a>. All Rights Reserved.
+        &copy;<a style="color: #37b69b !important;">Software Paradise</a> All Rights Reserved.
 
-        
+
 
     </p>
 </div>

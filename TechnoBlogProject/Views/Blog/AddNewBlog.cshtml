@@ -28,6 +28,10 @@
     @Html.Label("Date")
     @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.BlogDate, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Blog Url For Seo")
+    @Html.TextBoxFor(x => x.BlogUrl, new { @class = "form-control", @placeholder = "Example: what-is-the-software" })
+    @Html.ValidationMessageFor(x => x.BlogUrl, "", new { @class = "text-danger" })
 
     <br />
 
@@ -35,14 +39,14 @@
     <br />
     @Html.Label("Author")
     @Html.DropDownListFor(x => x.AuthorId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
-
     <br />
+  
     @Html.Label("Content")
     <div ass="col-md-10">
 
 
         @Html.TextAreaFor(x => x.BlogContent, new { @id = "editor", @class = "form-control", @rows = "200" })
-        @Html.ValidationMessageFor(x => x.BlogContent,"", new {@class="text-danger"})
+        @Html.ValidationMessageFor(x => x.BlogContent, "", new { @class = "text-danger" })
 
         <script>
             CKEDITOR.replace('editor')

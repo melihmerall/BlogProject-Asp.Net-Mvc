@@ -15,16 +15,18 @@
     @Html.Label("Author Name Surname")
     @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control" })
     <br />
-     @Html.Label("Image")
-    <input type="file" name="AuthorImage" value="" />
-   
+    @*@Html.Label("Image")
+        <input type="file" name="AuthorImage" value="" />*@
+    @Html.Label("Image")
+    @Html.TextBoxFor(x => x.AuthorImage, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorImage)
     @*@Html.TextBoxFor(x => x.AuthorImage, new { @class = "form-control",@type="file",@name="AuthorImage" })*@
     <br />
     @Html.Label("Author Skills")
     @Html.TextBoxFor(x => x.AuthorShortAbout, new { @placeholder = "Ex. Usage: Software / Data / Design", @class = "form-control" })
     <br />
-    @Html.Label("Author Status")
-    @Html.TextBoxFor(x => x.AuthorTitle, new { @class = "form-control", @placeholder = "What is your Job?" })
+
+    @Html.TextBoxFor(x => x.AuthorStatus, new { @class = "form-control", @type = "hidden" })
     <br />
     @Html.Label("About")
     @Html.TextBoxFor(x => x.AuthorDetail, new { @class = "form-control", @placeholder = "Who are you?" })

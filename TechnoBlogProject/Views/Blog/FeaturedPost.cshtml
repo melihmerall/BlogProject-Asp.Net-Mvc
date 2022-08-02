@@ -1,20 +1,20 @@
-﻿
+﻿@using TechnoBlogProject.Helper;
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-7 px-0">
 
-            
+
             <div class="owl-carousel main-carousel position-relative">
                 <div class="position-relative overflow-hidden" style="height: 500px;">
                     <img class="img-fluid h-100" src="@ViewBag.postImage1" style="object-fit: cover;">
                     <div class="overlay">
                         <div class="mb-2">
                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                               href="/Blog/BlogDetails/@ViewBag.blogCategory1">@ViewBag.blogCategory1</a>
-                            <a class="text-white" href="">@(((DateTime)ViewBag.blogDate1).ToString("yyyy MMMM dd"))</a>
+                               href="/software/1">@ViewBag.blogCategory1</a>
+                            <a class="text-white">@(((DateTime)ViewBag.blogDate1).ToString("yyyy MMMM dd"))</a>
                         </div>
-                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId1">@ViewBag.postTitle1</a>
+                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/article/@ViewBag.blogUrl1/@ViewBag.blogPostId1">@ViewBag.postTitle1</a>
                     </div>
                 </div>
                 <div class="position-relative overflow-hidden" style="height: 500px;">
@@ -22,10 +22,10 @@
                     <div class="overlay">
                         <div class="mb-2">
                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                               href="/Blog/BlogDetails/@ViewBag.blogCategory2">@ViewBag.blogCategory2</a>
-                            <a class="text-white" href="">@(((DateTime)ViewBag.blogDate2).ToString("yyyy MMMM dd"))</a>
+                               href="/web-development/2">@ViewBag.blogCategory2</a>
+                            <a class="text-white">@(((DateTime)ViewBag.blogDate2).ToString("yyyy MMMM dd"))</a>
                         </div>
-                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId2">@ViewBag.postTitle2</a>
+                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/article/@ViewBag.blogUrl2/@ViewBag.blogPostId2">@ViewBag.postTitle2</a>
                     </div>
                 </div>
                 <div class="position-relative overflow-hidden" style="height: 500px;">
@@ -33,14 +33,14 @@
                     <div class="overlay">
                         <div class="mb-2">
                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                               href="/Blog/BlogDetails/@ViewBag.blogCategory3">@ViewBag.blogCategory3</a>
-                            <a class="text-white" href="">@(((DateTime)ViewBag.blogDate3).ToString("yyyy MMMM dd"))</a>
+                               href="/artifical-intelligance/3">@ViewBag.blogCategory3</a>
+                            <a class="text-white">@(((DateTime)ViewBag.blogDate3).ToString("yyyy MMMM dd"))</a>
                         </div>
-                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId3">@ViewBag.postTitle3</a>
+                        <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="/article/@ViewBag.blogUrl3/@ViewBag.blogPostId3">@ViewBag.postTitle3</a>
                     </div>
                 </div>
             </div>
-         
+
         </div>
         <div class="col-lg-5 px-0">
             <div class="row mx-0">
@@ -50,10 +50,10 @@
                         <div class="overlay">
                             <div style="margin-right: 30%;" class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                   href="/Blog/BlogDetails/@ViewBag.blogCategory4">@ViewBag.blogCategory4</a>
-                                <a class="text-white" href=""><small>@(((DateTime)ViewBag.blogDate4).ToString("yyyy MMMM dd"))</small></a>
+                                   href="/data-visualization/9">@ViewBag.blogCategory4</a>
+                                <a class="text-white"><small>@(((DateTime)ViewBag.blogDate4).ToString("yyyy MMMM dd"))</small></a>
                             </div>
-                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId4">@ViewBag.postTitle4</a>
+                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/article/@ViewBag.blogUrl4/@ViewBag.blogPostId4">@ViewBag.postTitle4</a>
                         </div>
                     </div>
                 </div>
@@ -63,10 +63,10 @@
                         <div class="overlay">
                             <div style="margin-right: 30%;" class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                   href="/Blog/BlogDetails/@ViewBag.blogCategory5">@ViewBag.blogCategory5</a>
-                                <a class="text-white" href=""><small>@(((DateTime)ViewBag.blogDate5).ToString("yyyy MMMM dd"))</small></a>
+                                   href="/digital-marketing/11">@ViewBag.blogCategory5</a>
+                                <a class="text-white"><small>@(((DateTime)ViewBag.blogDate5).ToString("yyyy MMMM dd"))</small></a>
                             </div>
-                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId5">@ViewBag.postTitle5</a>
+                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/article/@ViewBag.blogUrl5/@ViewBag.blogPostId5">@ViewBag.postTitle5</a>
                         </div>
                     </div>
                 </div>
@@ -76,10 +76,10 @@
                         <div class="overlay">
                             <div style="margin-right: 30%;" class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                   href="/Blog/BlogDetails/@ViewBag.blogCategory6">@ViewBag.blogCategory6</a>
-                                <a class="text-white" href=""><small>@(((DateTime)ViewBag.blogDate6).ToString("yyyy MMMM dd"))</small></a>
+                                   href="/blockchain-web3/10">@ViewBag.blogCategory6</a>
+                                <a class="text-white"><small>@(((DateTime)ViewBag.blogDate6).ToString("yyyy MMMM dd"))</small></a>
                             </div>
-                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId6">@ViewBag.postTitle6</a>
+                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/article/@ViewBag.blogUrl6/@ViewBag.blogPostId6">@ViewBag.postTitle6</a>
                         </div>
                     </div>
                 </div>
@@ -89,10 +89,10 @@
                         <div class="overlay">
                             <div style="margin-right: 30%;" class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                   href="/Blog/BlogDetails/@ViewBag.blogCategory7">@ViewBag.blogCategory7</a>
-                                <a class="text-white" href=""><small>@(((DateTime)ViewBag.blogDate7).ToString("yyyy MMMM dd"))</small></a>
+                                   href="/desktop-development/4">@ViewBag.blogCategory7</a>
+                                <a class="text-white"><small>@(((DateTime)ViewBag.blogDate7).ToString("yyyy MMMM dd"))</small></a>
                             </div>
-                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/Blog/BlogDetails/@ViewBag.blogPostId7">@ViewBag.postTitle7</a>
+                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="/article/@ViewBag.blogUrl7/@ViewBag.blogPostId7">@ViewBag.postTitle7</a>
                         </div>
                     </div>
                 </div>

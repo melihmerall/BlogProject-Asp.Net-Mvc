@@ -36,6 +36,7 @@ namespace TechnoBlogProject.Controllers
             return PartialView(authorList);
         }
         [HttpGet]
+        [Route("updateAboutList")]
         public ActionResult UpdateAboutList()
         {
             var aboutList = aboutManager.GetAll();

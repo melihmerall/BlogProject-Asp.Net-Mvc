@@ -15,7 +15,8 @@ namespace Entity.Concrete
         public int BlogId { get; set; }
         [StringLength(100)]
         public string BlogTitle { get; set; }
-  
+
+        public string BlogUrl { get; set; }
         public string BlogImage { get; set; }
         public DateTime BlogDate { get; set; }
         [ AllowHtml]

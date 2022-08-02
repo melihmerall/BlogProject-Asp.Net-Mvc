@@ -13,47 +13,51 @@
             <h4 class="card-title">Edit Your Blog</h4>
             <br />
            
-            <form class="form-control-sidebar " method="post" enctype="multipart/form-data">
-
+            <form class="" method="post" enctype="multipart/form-data">
+                @Html.TextBoxFor(x => x.BlogRating, new { @class = "form-control", type = "hidden" })
                 @Html.TextBoxFor(x => x.BlogId, new { @class = "form-control", type = "hidden" })
-                <br />
                 @Html.Label("Blog Title")
                 @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.BlogTitle)
+                @Html.ValidationMessageFor(x => x.BlogTitle, "", new { @class = "text-danger" })
+                <br />
+
+                @Html.TextBoxFor(x => x.BlogRating, new { @class = "form-control", type = "hidden" })
                 <br />
                 @Html.Label("Blog Category")
                 @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.CategoryId, "", new { @class = "text-danger" })
                 <br />
-                @Html.Label("Image")<br />
-        @*@Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
+                @*@Html.Label("Image")
+        @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.BlogImage)*@
+                @Html.Label("Image")<br />
+
                 <input type="file" name="BlogImage" value="" />
                 <br />
-                <br />
+                @Html.Label("Blog Url For Seo")
+                @Html.TextBoxFor(x => x.BlogUrl, new { @class = "form-control", @placeholder = "Example: what-is-the-software" })
+                @Html.ValidationMessageFor(x => x.BlogUrl, "", new { @class = "text-danger" })
                 <br />
                 @Html.Label("Date")
                 @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.BlogDate)
-                <br />
-                @Html.Label("Author")
-                @Html.DropDownListFor(x => x.AuthorId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.AuthorId)
-                <br />
-
-                @Html.TextBoxFor(x => x.BlogRating, new { @class = "form-control", @type = "hidden" })
+                @Html.ValidationMessageFor(x => x.BlogDate, "", new { @class = "text-danger" })
                 <br />
 
                 @Html.TextBoxFor(x => x.BlogStatus, new { @class = "form-control", @type = "hidden" })
+                <br />
+                @Html.Label("Author")
+                @Html.DropDownListFor(x => x.AuthorId, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
                 <br />
                 @Html.Label("Content")
                 <div ass="col-md-10">
 
 
-                    @Html.TextAreaFor(x => x.BlogContent, new { @id = "editor", @class = "form-group", @rows = "200" })
-                    @Html.ValidationMessageFor(x => x.BlogContent)
+                    @Html.TextAreaFor(x => x.BlogContent, new { @id = "editor", @class = "form-control", @rows = "200" })
+                    @Html.ValidationMessageFor(x => x.BlogContent, "", new { @class = "text-danger" })
                     <script>
-                     
-                            CKEDITOR.replace('editor')
+
+                        CKEDITOR.replace('editor')
+
 
 
 

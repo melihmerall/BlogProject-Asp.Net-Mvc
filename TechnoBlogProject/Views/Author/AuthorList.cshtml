@@ -87,6 +87,14 @@
                                                 <i class="fas fa-comments"></i>Authors Blog
 
                                             </a>
+                                            @if (value.AuthorStatus == true)
+                                            {
+                                                <a href="/Author/StatusChangeToFalse/@value.AuthorId" class="btn btn-danger">Remove</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="/Author/StatusChangeToTrue/@value.AuthorId" class="btn btn-success">Show</a>
+                                            }
 
                                             <a href="/Author/AuthorEdit/@value.AuthorId" class="btn btn-sm btn-primary">
 
@@ -121,4 +129,4 @@
 </body>
 
 </html>
-<a href="/Author/AddAuthor/" class="btn btn-primary">Add New Author</a>
+<a href="/AddAuthor/" class="btn btn-primary">Add New Author</a>

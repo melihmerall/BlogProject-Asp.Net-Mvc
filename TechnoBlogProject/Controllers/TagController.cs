@@ -18,18 +18,20 @@ namespace TechnoBlogProject.Controllers
         {
             return View();
         }
-      
+        [Route("adminTagList")]
         public ActionResult TagList()
         {
             var tagList = tagManager.GetAll();
             return View(tagList);
         }
         [HttpGet]
+        [Route("addNewTag")]
         public ActionResult AddNewTag()
         {
             return View();
         }
         [HttpPost]
+          [Route("addNewTag")]
         public ActionResult AddNewTag(Tag t)
         {
             tagManager.AddTag(t);

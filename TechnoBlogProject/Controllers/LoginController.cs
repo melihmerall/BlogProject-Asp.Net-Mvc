@@ -10,18 +10,19 @@ using Entity.Concrete;
 namespace TechnoBlogProject.Controllers
 {
     [AllowAnonymous]
+    
     public class LoginController : Controller
     {
 
         // GET: Login
         [HttpGet]
-    
+        [Route("AuthorLogin")]
         public ActionResult AuthorLogin()
         {
             return View();
         }
         [HttpPost]
-       
+        [Route("AuthorLogin")]
         public ActionResult AuthorLogin(Author a)
         {
             BlogContext _blogContext = new BlogContext();
@@ -42,11 +43,13 @@ namespace TechnoBlogProject.Controllers
 
         }
         [HttpGet]
+        [Route("AdminLogin")]
         public ActionResult AdminLogin()
         {
             return View();
         }
         [HttpPost]
+        [Route("AdminLogin")]
         public ActionResult AdminLogin(Admin a)
         {
             BlogContext _blogContext = new BlogContext();

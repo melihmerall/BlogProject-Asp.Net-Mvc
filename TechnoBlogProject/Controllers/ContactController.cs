@@ -13,14 +13,14 @@ namespace TechnoBlogProject.Controllers
         // GET: Contact
         ContactManager contactManager = new ContactManager();
         [AllowAnonymous]
-        
+    
         public ActionResult Index()
         {
             return View();
         }
         [AllowAnonymous]
         [HttpGet]
-
+        [Route("contact")]
         public ActionResult SendMessage()
         {
             return View();
