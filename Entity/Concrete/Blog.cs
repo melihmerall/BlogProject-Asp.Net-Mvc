@@ -38,12 +38,7 @@ namespace Entity.Concrete
         public ICollection<Comment> Comments { get; set; }
 
 
-        // Many  to Many relation
-        public Blog()
-        {
-            this.Tags = new HashSet<Tag>();
-        }
-        public virtual ICollection<Tag> Tags { get; set; }
+
 
     }
 }
